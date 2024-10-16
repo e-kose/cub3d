@@ -10,7 +10,7 @@ BSOURCES = ft_lstnew.c ft_lstadd_front.c ft_lstlast.c  ft_lstsize.c ft_lstadd_ba
 OBJECTS = $(SOURCE:.c=.o)
 BOBJECTS = $(BSOURCES:.c=.o)
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar
 

@@ -6,33 +6,12 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/14 18:38:58 by ekose            ###   ########.fr       */
+/*   Updated: 2024/10/16 18:52:47 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-// static void ft_check_rgb(t_data *data)
-// {
-// 	int i;
-// 	int j;
-// 	int check;
-	
-// 	i = -1;
-// 	check = 0;
-// 	while(++i < 3)
-// 	{
-// 		j = -1;
-// 		while(++j < 3)
-// 		{
-// 			if(data->texture->floor[i][j] < 0 || data->texture->floor[i][j] > 255)
-// 				check++;
-// 			if(data->texture->ceiling[i][j] < 0 || data->texture->ceiling[i][j] > 255)
-// 				check++;
-// 		}
-// 	}
-// 	if(check != 0)
-// 		ft_free(data, "RGB value must be between 0 and 255");
-// }
+
 // static void ft_check_texture(t_data *data)
 // {
 // 	int	fd[4];
@@ -55,6 +34,68 @@
 // 	if(check != 0)
 // 		ft_free(data, "Texture file not found");
 // }
+static void ft_check_rgb(t_data *data, char **rgb)
+{
+	int	i;
+	int	j;
+	
+	i = -1;
+	while (rgb[++i])
+	{
+		j = -1;
+		while ((rgb[i][++j]))
+		{
+			if (!ft_isdigit((rgb[i][j])))
+			{
+				if (rgb[i][j] == '-')
+					ft_free(data, "RGB value must be between 0 and 255");
+				ft_free(data, "RGB value must be digit");
+			}
+		}
+	}
+}
+static void ft_convert_rgb(t_data *data, char **rgb, char c)
+{
+	int i;
+
+	i = -1;
+	ft_check_rgb(data, rgb);
+	while (rgb[++i])
+	{
+		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
+			ft_free(data, "RGB value must be between 0 and 255");
+	}
+	i = -1;
+	while (rgb[++i])
+	{
+		if (c == 'F')
+			data->texture->floor_color[i] = ft_atoi(rgb[i]);
+		else if (c == 'C')
+			data->texture->ceiling_color[i] = ft_atoi(rgb[i]);
+	}	
+}
+static char **ft_clean_rgb(t_data *data, char **str)
+{
+	int	i;
+	char	**tmp;
+	
+	i = -1;
+	tmp = malloc(sizeof(char *) * 4);
+	if(tmp == NULL)
+		ft_free(data, "Malloc error");
+	while(str[++i])
+	{
+		tmp[i] = ft_strtrim(str[i], " ");
+		free(str[i]);
+		if (tmp[i] == NULL)
+			ft_free(data, "Malloc error");
+	}
+	tmp[i] = NULL;
+	free(str);
+	if (i != 3)
+		ft_free(data, "RGB value must be 3");
+	return (tmp);
+}
 void ft_parse_map(char *av, t_data *data)
 {	
 	data->argv = av;
@@ -68,6 +109,9 @@ void ft_parse_map(char *av, t_data *data)
 		ft_free(data, "File not found");
 	ft_read_map(data);
 	// ft_check_texture(data);
-	// ft_check_rgb(data);
+	data->texture->floor = ft_clean_rgb(data, data->texture->floor);
+	data->texture->ceiling = ft_clean_rgb(data, data->texture->ceiling);
+	ft_convert_rgb(data, data->texture->floor , 'F');
+	ft_convert_rgb(data, data->texture->ceiling, 'C');
 	//!!!-------------RGB int çevirlecek----------- !!!!!!!!
 }

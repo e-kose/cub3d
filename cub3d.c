@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/14 18:26:44 by ekose            ###   ########.fr       */
+/*   Updated: 2024/10/16 18:48:57 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int main(int ac, char **av)
 	printf("SO: %s\n", data->texture->south);
 	printf("WE: %s\n", data->texture->west);
 	printf("EA: %s\n", data->texture->east);
-	printf("F: %s\n", data->texture->floor[2]);
-	printf("C: %s\n", data->texture->ceiling[2]);
+	printf("F: %d\n", data->texture->floor_color[1]);
+	printf("C: %d\n", data->texture->ceiling_color[2]);
+	ft_free(data, NULL);
 	return (0);
 }

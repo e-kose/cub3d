@@ -6,15 +6,20 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/14 18:26:36 by ekose            ###   ########.fr       */
+/*   Updated: 2024/10/16 18:17:53 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-# include "mlx/mlx.h"
+# ifdef __linux__
+	#include "mlx_linux/mlx.h"
+	#define LIB_NAME "Linux Library"
+# else
+	#include "mlx_mac/mlx.h"
+	#define LIB_NAME "Mac Library"
+# endif
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -49,7 +54,6 @@ typedef struct s_data
 	t_texture	*texture;
 	char 		*argv;
 	int 		fd;
-	
 }	t_data;
 
 
