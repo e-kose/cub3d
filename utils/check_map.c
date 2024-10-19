@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/16 18:52:47 by ekose            ###   ########.fr       */
+/*   Updated: 2024/10/17 17:24:01 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static void ft_check_rgb(t_data *data, char **rgb)
 			{
 				if (rgb[i][j] == '-')
 					ft_free(data, "RGB value must be between 0 and 255");
-				ft_free(data, "RGB value must be digit");
+				if (!((rgb[i][j] >= 9 && rgb[i][j] <= 13) || rgb[i][j] == 32))
+					ft_free(data, "RGB value must be digit");
 			}
 		}
 	}
@@ -98,14 +99,15 @@ static char **ft_clean_rgb(t_data *data, char **str)
 }
 void ft_parse_map(char *av, t_data *data)
 {	
-	data->argv = av;
 	size_t		i;
+	int			fd;
 
+	data->argv = av;
 	i = ft_strlen(data->argv) - 4;
 	if (ft_strncmp(&(data->argv[i]), ".cub", 4) != 0 && i != 0)
 		ft_free(data, "Invalid file extension");
-	data->fd = open(data->argv, O_RDONLY, 777);
-	if(data->fd == -1)
+	fd = open(data->argv, O_RDONLY, 777);
+	if(fd == -1)
 		ft_free(data, "File not found");
 	ft_read_map(data);
 	// ft_check_texture(data);
@@ -113,5 +115,5 @@ void ft_parse_map(char *av, t_data *data)
 	data->texture->ceiling = ft_clean_rgb(data, data->texture->ceiling);
 	ft_convert_rgb(data, data->texture->floor , 'F');
 	ft_convert_rgb(data, data->texture->ceiling, 'C');
-	//!!!-------------RGB int çevirlecek----------- !!!!!!!!
+	
 }
