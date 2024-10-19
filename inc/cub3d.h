@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/17 17:59:03 by ekose            ###   ########.fr       */
+/*   Updated: 2024/10/19 18:46:00 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@
 typedef struct s_map
 {
 	char	**map;
+	char	**cpymap;
 	char	*_1d_map;
 	int		map_width;
 	int		map_height;
+	int		space_count;
 
 }	t_map;
 typedef struct s_texture
@@ -66,4 +68,10 @@ void 	ft_read_map(t_data *data);
 void 	ft_parse_map(char *av, t_data *data);
 void 	ft_free(t_data *data, char *s);
 void	ft_check_line(t_data *data, char *line);
+void	ft_fill_space(t_map *map);
+void	ft_print_double_str(char **str);
+void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
+void	ft_free_double_str(char **s);
+void	ft_check_fill(t_data *data);
+void	ft_check_wall(t_data *data, char **map);
 #endif

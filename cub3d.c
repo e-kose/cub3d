@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/17 17:29:12 by ekose            ###   ########.fr       */
+/*   Updated: 2024/10/19 15:26:29 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void ft_init(t_data *data)
 	data->texture->east = NULL;
 	data->texture->floor = NULL;
 	data->texture->ceiling = NULL;
-	
+
 }
 int main(int ac, char **av)
 {
@@ -45,15 +45,16 @@ int main(int ac, char **av)
 		ft_error_msg("Malloc error");
 	ft_init(data);
 	ft_parse_map(av[1], data);
-	printf("NO: %s\n", data->texture->north);
-	printf("SO: %s\n", data->texture->south);
-	printf("WE: %s\n", data->texture->west);
-	printf("EA: %s\n", data->texture->east);
-	printf("F: %d,%d,%d\n", data->texture->floor_color[0], data->texture->floor_color[1], data->texture->floor_color[2]);
-	printf("C: %d,%d,%d\n", data->texture->ceiling_color[0], data->texture->ceiling_color[1], data->texture->ceiling_color[2]);
-	int i = -1;
-	while(data->map->map[++i])
-		printf("Map: %s\n", data->map->map[i]);
+	// printf("NO: %s\n", data->texture->north);
+	// printf("SO: %s\n", data->texture->south);
+	// printf("WE: %s\n", data->texture->west);
+	// printf("EA: %s\n", data->texture->east);
+	// printf("F: %d,%d,%d\n", data->texture->floor_color[0], data->texture->floor_color[1], data->texture->floor_color[2]);
+	// printf("C: %d,%d,%d\n", data->texture->ceiling_color[0], data->texture->ceiling_color[1], data->texture->ceiling_color[2]);
+	// printf("Map:\n");
+	// ft_print_double_str(data->map->map);
+	printf("copymap:\n");
+	ft_print_double_str(data->map->cpymap);
 	printf("Map height: %d\n", data->map->map_height);
 	printf("player: %d,%d\n", data->player[0], data->player[1]);
 	printf("player_dir: %c\n", data->player_dir);
