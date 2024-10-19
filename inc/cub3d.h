@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/19 18:46:00 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:25:55 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
 
+typedef struct s_node
+{
+	char				*str;
+	struct s_node		*next;
+
+}	t_node;
+
 typedef struct s_map
 {
 	char	**map;
@@ -44,8 +51,8 @@ typedef struct s_texture
 	char	*south;
 	char	*west;
 	char	*east;
-	char 	**floor;
-	char 	**ceiling;
+	char	**floor;
+	char	**ceiling;
 	int		txt_count[6];
 	int		floor_color[3];
 	int		ceiling_color[3];
@@ -55,10 +62,11 @@ typedef struct s_data
 {
 	t_map 		*map;
 	t_texture	*texture;
-	char 		*argv;
-	int 		*player;
-	char 		player_dir;
-	int 		fd;
+	t_node		*node;
+	char		*argv;
+	int			*player;
+	char		player_dir;
+	int			fd;
 }	t_data;
 
 
@@ -74,4 +82,5 @@ void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
 void	ft_free_double_str(char **s);
 void	ft_check_fill(t_data *data);
 void	ft_check_wall(t_data *data, char **map);
+void	ft_take_map(t_node *node, char *line);
 #endif
