@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 13:16:38 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:46:17 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	ft_parse_map(char *av, t_data *data)
 	ft_check_wall(data, data->map->map);
 	ft_fill_space(data->map);
 	ft_flood_fill(data->player[0], data->player[1], data->map);
-	ft_check_fill(data);
+	ft_check_fill(data, -1, -1);
 	// ft_check_texture(data);
+	ft_check_space(data);
 	data->texture->floor = ft_clean_rgb(data, data->texture->floor);
 	data->texture->ceiling = ft_clean_rgb(data, data->texture->ceiling);
 	ft_convert_rgb(data, data->texture->floor, 'F');

@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:53:00 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 12:33:16 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:52:20 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static void ft_free_map(t_data *data)
 		free(data->map->_1d_map);
 	if (data->map->map != NULL)
 		ft_free_double_str(data->map->map);
+	if (data->map->cpymap != NULL)
+		ft_free_double_str(data->map->cpymap);
 	free(data->map);
 }
 static void ft_free_texture(t_data *data)

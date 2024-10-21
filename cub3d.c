@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 12:33:04 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:51:28 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	ft_init(t_data *data)
 		data->texture->txt_count[i] = 0;
 	data->map->map_width = 0;
 	data->map->map_height = 0;
+	data->map->cpymap = NULL;
 	data->texture->north = NULL;
 	data->texture->south = NULL;
 	data->texture->west = NULL;
@@ -56,6 +57,7 @@ int	main(int ac, char **av)
 	// ft_print_double_str(data->map->map);
 	// printf("copymap:\n");
 	// ft_print_double_str(data->map->cpymap);
+	ft_print_double_str(data->map->map);
 	printf("Map height: %d\n", data->map->map_height);
 	printf("player: %d,%d\n", data->player[0], data->player[1]);
 	printf("player_dir: %c\n", data->player_dir);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flod_fill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 12:39:08 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/20 17:04:18 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:53:37 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,42 +37,65 @@ void	ft_fill_space(t_map *map)
 		map->cpymap[i] = ft_strdup(map->map[i]);
 	}
 }
+void	ft_check_space(t_data *data)
+{
+	char	**map;
+	int		i;
+	int		j;
 
+	// ft_free_double_str(data->map->cpymap); // copymap kullanırsan bunu kaldır
+	map = data->map->map;
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if ((map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W')
+				&& ((i -1 >= 0 && map[i -1][j] == 'B')
+				|| (i +1 < data->map->map_height && map[i +1][j] == 'B')
+				|| (j -1 >= 0 && map[i][j -1] == 'B')
+				|| (j +1 < (int)ft_strlen(map[i]) && map[i][j +1] == 'B')))
+				ft_free(data, "Map has empty space");
+		}
+	}
+}
 void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map)
 {
 	if (plyr_y < 0 || plyr_x < 0 || plyr_y >= map->map_height
 		|| plyr_x >= (int)ft_strlen(map->cpymap[plyr_y])
-		|| map->cpymap[plyr_y][plyr_x] == '1')
+		|| map->cpymap[plyr_y][plyr_x] == 'B' || map->cpymap[plyr_y][plyr_x] == 'X')
 		return ;
-	map->cpymap[plyr_y][plyr_x] = '1';
+	map->cpymap[plyr_y][plyr_x] = 'X';
 	ft_flood_fill(plyr_y +1, plyr_x, map);
 	ft_flood_fill(plyr_y -1, plyr_x, map);
 	ft_flood_fill(plyr_y, plyr_x +1, map);
 	ft_flood_fill(plyr_y, plyr_x -1, map);
 }
 
-void	ft_check_fill(t_data *data)
+void	ft_check_fill(t_data *data, int i, int j)
 {
-	int	i;
-	int	j;
-	int	re_count;
+	char	**map;
 
-	re_count = 0;
-	i = -1;
-	while (data->map->cpymap[++i])
+	map = data->map->cpymap;
+	while (map[++i])
 	{
 		j = -1;
-		while (data->map->cpymap[i][++j])
+		while (map[i][++j])
 		{
-			if (data->map->cpymap[i][j] == 'B')
-				re_count++;
+			if (map[i][j] != 'X' && map[i][j] != 'B')
+			{
+				if (map[i][j] == '1'
+					&& ((i -1 >= 0
+					&& (map[i -1][j] != 'B' && map[i -1][j] != '1'))
+					|| (i +1 < data->map->map_height
+					&& (map[i +1][j] != 'B' && map[i +1][j] != '1'))
+					|| (j -1 >= 0 && (map[i][j -1] != 'B'
+					&& map[i][j -1] != '1')) || (j +1 < (int)ft_strlen(map[i])
+					&& (map[i][j +1] != 'B' && map[i][j +1] != '1'))))
+					ft_free(data, "Multiple map error");
+			}
 		}
 	}
-	if (re_count != data->map->space_count)
-	{
-		ft_print_double_str(data->map->cpymap);
-		ft_free_double_str(data->map->cpymap);
-		ft_free(data, "Map is not closed");
-	}
-	ft_free_double_str(data->map->cpymap);
 }

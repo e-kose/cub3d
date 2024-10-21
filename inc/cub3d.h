@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 13:39:12 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:45:41 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
 
-
 typedef struct s_map
 {
 	char	**map;
@@ -39,6 +38,7 @@ typedef struct s_map
 	int		space_count;
 
 }	t_map;
+
 typedef struct s_texture
 {
 	char	*north;
@@ -54,7 +54,7 @@ typedef struct s_texture
 
 typedef struct s_data
 {
-	t_map 		*map;
+	t_map		*map;
 	t_texture	*texture;
 	t_list		*node;
 	char		*argv;
@@ -63,18 +63,18 @@ typedef struct s_data
 	int			fd;
 }	t_data;
 
-
 void	ft_error_msg(char *s);
 int		ft_strcmp(char *s1, char *s2);
-void 	ft_read_map(t_data *data);
-void 	ft_parse_map(char *av, t_data *data);
-void 	ft_free(t_data *data, char *s);
+void	ft_read_map(t_data *data);
+void	ft_parse_map(char *av, t_data *data);
+void	ft_free(t_data *data, char *s);
 void	ft_check_char(t_data *data, char *line);
 void	ft_fill_space(t_map *map);
 void	ft_print_double_str(char **str);
 void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
+void	ft_check_fill(t_data *data, int i, int j);
+void	ft_check_space(t_data *data);
 void	ft_free_double_str(char **s);
-void	ft_check_fill(t_data *data);
 void	ft_check_wall(t_data *data, char **map);
 void	ft_take_map(t_list **node, char *line);
 int		ft_check_texture_count(t_data *data);

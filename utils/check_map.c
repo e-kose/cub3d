@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:34:49 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/21 13:42:08 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:57:41 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	ft_check_char(t_data *data, char *line)
 		data->map->map_width = (int) ft_strlen(line);
 	while (tmp[i] && (tmp[i] == ' '))
 		i++;
+	// if (i == (int)ft_strlen(tmp) && i != 0)
+	// 	ft_free(data, "Map must be surrounded by walls");
 	while (tmp[i])
 	{
 		if (tmp[i] != 'N' && tmp[i] != 'S' && tmp[i] != 'E' && tmp[i] != 'W'

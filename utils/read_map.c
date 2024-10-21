@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:58:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 12:41:53 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:06:03 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,5 @@ void	ft_take_map(t_list **node, char *line)
 	t_list	*new_node;
 
 	new_node = ft_lstnew(line);
-	if (!new_node)
-		ft_error_msg("Malloc error");
 	ft_lstadd_back(node, new_node);
 }
