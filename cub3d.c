@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/20 16:37:50 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:33:04 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/cub3d.h"
 
-static void ft_init(t_data *data)
+static void	ft_init(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	data->map = malloc(sizeof(t_map));
+	data->texture = malloc(sizeof(t_texture));
+	data->node = malloc(sizeof(t_list));
+	if (data->map == NULL || data->texture == NULL
+		|| data->node == NULL)
+		ft_error_msg("Malloc error");
 	data->map->_1d_map = ft_strdup("\n");
 	data->map->map = NULL;
-	data->player = NULL;
-	data->texture = malloc(sizeof(t_texture));
-	if(data->map == NULL || data->texture == NULL)
-		ft_error_msg("Malloc error");
-	while(++i < 6)
+	data->node = NULL;
+	while (++i < 6)
 		data->texture->txt_count[i] = 0;
 	data->texture->north = NULL;
 	data->texture->south = NULL;
@@ -32,11 +34,10 @@ static void ft_init(t_data *data)
 	data->texture->east = NULL;
 	data->texture->floor = NULL;
 	data->texture->ceiling = NULL;
-
 }
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_data *data;
+	t_data	*data;
 
 	if (ac != 2)
 		ft_error_msg("Number of invalid arguments");

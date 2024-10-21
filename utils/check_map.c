@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:34:49 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/19 19:12:18 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:42:08 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,54 @@ void	ft_check_wall(t_data *data, char **map)
 				|| j > (int)ft_strlen(map[i - 1])))))
 				ft_free(data, "Map must be surrounded by walls");
 		}
+	}
+}
+
+void	ft_check_char(t_data *data, char *line)
+{
+	int			i;
+	int			check;
+	char		*tmp;
+
+	check = 0;
+	i = 0;
+	tmp = ft_strtrim(line, "\n");
+	if (data->map->map_width < (int) ft_strlen(line))
+		data->map->map_width = ft_strlen(line);
+	while (tmp[i] && (tmp[i] == ' '))
+		i++;
+	while (tmp[i])
+	{
+		if (tmp[i] != 'N' && tmp[i] != 'S' && tmp[i] != 'E' && tmp[i] != 'W'
+			&& tmp[i] != '0' && tmp[i] != '1' && tmp[i] != ' ' && tmp[i] != '\n')
+			check++;
+		i++;
+	}
+	free(tmp);
+	if (check > 0)
+		ft_free(data, "Invalid map character");
+}
+void	ft_check_line(t_data *data)
+{
+	t_list	*tmp;
+	char	*line;
+
+	tmp = data->node;
+	while (tmp)
+	{
+		line = (char *)tmp->content;
+		if (ft_strlen(line) == 1 && line[0] == '\n')
+		{
+			tmp = tmp->next;
+			while (tmp)
+			{
+				line = (char *)tmp->content;
+				if (ft_strlen(line) != 1 && line[0] != '\n')
+					ft_free(data, "Invalid map");
+				tmp = tmp->next;
+			}
+		}
+		if (tmp)
+			tmp = tmp->next;
 	}
 }

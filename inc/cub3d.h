@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/20 16:22:43 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:39:12 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_data
 	t_texture	*texture;
 	t_list		*node;
 	char		*argv;
-	int			*player;
+	int			player[2];
 	char		player_dir;
 	int			fd;
 }	t_data;
@@ -69,12 +69,17 @@ int		ft_strcmp(char *s1, char *s2);
 void 	ft_read_map(t_data *data);
 void 	ft_parse_map(char *av, t_data *data);
 void 	ft_free(t_data *data, char *s);
-void	ft_check_line(t_data *data, char *line);
+void	ft_check_char(t_data *data, char *line);
 void	ft_fill_space(t_map *map);
 void	ft_print_double_str(char **str);
 void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
 void	ft_free_double_str(char **s);
 void	ft_check_fill(t_data *data);
 void	ft_check_wall(t_data *data, char **map);
-// void	ft_take_map(t_list *node, char *line);
+void	ft_take_map(t_list **node, char *line);
+int		ft_check_texture_count(t_data *data);
+void	ft_take_texture(t_data *data, char *line, int *i);
+char	**ft_clean_rgb(t_data *data, char **str);
+void	ft_convert_rgb(t_data *data, char **rgb, char c);
+void	ft_check_line(t_data *data);
 #endif
