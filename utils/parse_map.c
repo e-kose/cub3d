@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/19 18:46:30 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/20 17:10:49 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	ft_parse_map(char *av, t_data *data)
 	ft_read_map(data);
 	ft_check_wall(data, data->map->map);
 	ft_fill_space(data->map);
+	printf("--------------------\n");
 	ft_flood_fill(data->player[0], data->player[1], data->map);
 	ft_check_fill(data);
 	// ft_check_texture(data);

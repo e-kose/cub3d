@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/19 20:25:55 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:22:43 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
 
-typedef struct s_node
-{
-	char				*str;
-	struct s_node		*next;
-
-}	t_node;
 
 typedef struct s_map
 {
@@ -62,7 +56,7 @@ typedef struct s_data
 {
 	t_map 		*map;
 	t_texture	*texture;
-	t_node		*node;
+	t_list		*node;
 	char		*argv;
 	int			*player;
 	char		player_dir;
@@ -82,5 +76,5 @@ void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
 void	ft_free_double_str(char **s);
 void	ft_check_fill(t_data *data);
 void	ft_check_wall(t_data *data, char **map);
-void	ft_take_map(t_node *node, char *line);
+// void	ft_take_map(t_list *node, char *line);
 #endif

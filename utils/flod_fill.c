@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flod_fill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 12:39:08 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/19 19:07:41 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/20 17:04:18 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_fill_space(t_map *map)
 	int	i;
 	int	j;
 
-	map->cpymap = malloc(sizeof(char) * (map->map_height + 1));
+	map->cpymap = malloc(sizeof(char *) * (map->map_height + 1));
 	if (!map->cpymap)
 		ft_error_msg("Malloc eror");
 	map->cpymap[map->map_height] = NULL;

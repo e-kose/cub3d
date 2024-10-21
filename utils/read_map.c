@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:58:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/19 20:27:00 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/20 23:57:37 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ static void ft_map_feature(t_data *data)
 	data->map->map_height = i;
 }
 
+static void	ft_take_map(t_list **node, char *line)
+{
+	t_list	*new_node;
+
+	new_node = ft_lstnew(line);
+	if (!new_node)
+		ft_error_msg("Malloc error");
+	ft_lstadd_back(node, new_node);
+}
+
 static void	ft_map_fill(t_data *data, char *line)
 {
 	static int check = 0;
@@ -67,12 +77,9 @@ static void	ft_map_fill(t_data *data, char *line)
 	while(symbol[++i] && check == 0)
 		if (ft_strchr(line, symbol[i]) != NULL)
 			check++;
-		data->node =malloc(sizeof(t_node));
-	if (data->node == NULL)
-		ft_error_msg("Malloc error");
-	ft_take_map(data->node, line);
 	if (check > 0)
 	{
+		ft_take_map(&data->node, ft_strdup(line));
 		// if(line[0] == '\n' )
 		// 	ft_free(data, "Multiple map error");
 		ft_check_line(data, line);
@@ -116,6 +123,10 @@ void ft_read_map(t_data *data)
 	char *line;
 	int i;
 
+	data->node = malloc(sizeof(t_list));
+	if (!data->node)
+		ft_error_msg("Malloc error");
+	data->node = NULL;
 	data->fd = open(data->argv, O_RDONLY);
 	line = get_next_line(data->fd);
 	while(line != NULL)
@@ -132,8 +143,18 @@ void ft_read_map(t_data *data)
 	free(line);
 	close(data->fd);
 	printf("map_1d: %s\n", data->map->_1d_map);
+	printf("node_listed: \n");
+	while(data->node)
+	{
+		printf("node: %s\n", (char *)data->node->content);
+		data->node = data->node->next;
+	}
+	printf("node_tmp: %s\n", (char *)data->node->content);
 	data->map->map = ft_split(data->map->_1d_map, '\n');
 	if (ft_check_texture_count(data) == 0)
 		ft_free(data, "Texture count error");
 	ft_map_feature(data);
+
+
+
 }

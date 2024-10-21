@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/19 15:26:29 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:37:50 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int main(int ac, char **av)
 	// printf("C: %d,%d,%d\n", data->texture->ceiling_color[0], data->texture->ceiling_color[1], data->texture->ceiling_color[2]);
 	// printf("Map:\n");
 	// ft_print_double_str(data->map->map);
-	printf("copymap:\n");
-	ft_print_double_str(data->map->cpymap);
+	// printf("copymap:\n");
+	// ft_print_double_str(data->map->cpymap);
 	printf("Map height: %d\n", data->map->map_height);
 	printf("player: %d,%d\n", data->player[0], data->player[1]);
 	printf("player_dir: %c\n", data->player_dir);
