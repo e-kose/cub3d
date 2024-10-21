@@ -19,15 +19,15 @@ static void	ft_init(t_data *data)
 	i = -1;
 	data->map = malloc(sizeof(t_map));
 	data->texture = malloc(sizeof(t_texture));
-	data->node = malloc(sizeof(t_list));
-	if (data->map == NULL || data->texture == NULL
-		|| data->node == NULL)
+	if (data->map == NULL || data->texture == NULL)
 		ft_error_msg("Malloc error");
 	data->map->_1d_map = ft_strdup("\n");
 	data->map->map = NULL;
 	data->node = NULL;
 	while (++i < 6)
 		data->texture->txt_count[i] = 0;
+	data->map->map_width = 0;
+	data->map->map_height = 0;
 	data->texture->north = NULL;
 	data->texture->south = NULL;
 	data->texture->west = NULL;

@@ -5,17 +5,17 @@ SRCS = inc/GNL/get_next_line.c cub3d.c utils/free.c utils/error.c \
 	   utils/check_map.c utils/rgb_utils.c utils/texture_utils.c
 OBJS = $(SRCS:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror  -g
 
 # İşletim sistemi tespiti
 UNAME_S := $(shell uname -s)
 
 # Kütüphaneler ve derleme talimatları işletim sistemine göre ayarlandı
 ifeq ($(UNAME_S), Linux)
-    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz -fsanitize=address
+    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz 
     MLX_DIR = inc/mlx_linux
 else ifeq ($(UNAME_S), Darwin)
-    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit -fsanitize=address
+    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit 
     MLX_DIR = inc/mlx_mac
 endif
 

@@ -14,15 +14,16 @@
 void	ft_free_list(t_data *data)
 {
 	t_list	*tmp;
+	t_list	*tmp2;
 
-	if (data->node == NULL)
-		return ;
-	while (data->node)
+	tmp = data->node;
+	while (tmp)
 	{
-		tmp = data->node;
-		data->node = data->node->next;
+
 		free(tmp->content);
-		free(tmp);
+		tmp2 = tmp;
+		tmp = tmp->next;
+		free(tmp2);
 	}
 }
 void ft_free_double_str(char **s)

@@ -53,7 +53,7 @@ void	ft_check_char(t_data *data, char *line)
 	i = 0;
 	tmp = ft_strtrim(line, "\n");
 	if (data->map->map_width < (int) ft_strlen(line))
-		data->map->map_width = ft_strlen(line);
+		data->map->map_width = (int) ft_strlen(line);
 	while (tmp[i] && (tmp[i] == ' '))
 		i++;
 	while (tmp[i])

@@ -74,4 +74,5 @@ void	ft_check_fill(t_data *data)
 		ft_free_double_str(data->map->cpymap);
 		ft_free(data, "Map is not closed");
 	}
+	ft_free_double_str(data->map->cpymap);
 }
