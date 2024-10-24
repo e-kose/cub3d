@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 17:45:41 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:07:37 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
+
+typedef struct s_mlx
+{
+    void    *mlx;
+    void    *win;
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}   t_mlx;
 
 typedef struct s_map
 {
@@ -57,6 +68,7 @@ typedef struct s_data
 	t_map		*map;
 	t_texture	*texture;
 	t_list		*node;
+	t_mlx		*mlx;
 	char		*argv;
 	int			player[2];
 	char		player_dir;
@@ -82,4 +94,6 @@ void	ft_take_texture(t_data *data, char *line, int *i);
 char	**ft_clean_rgb(t_data *data, char **str);
 void	ft_convert_rgb(t_data *data, char **rgb, char c);
 void	ft_check_line(t_data *data);
+void	ft_init_mlx(t_data *data);
+void ft_put_pixel(t_data *data, int x, int y, int color);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 17:51:28 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:02:31 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int ac, char **av)
 	printf("Map height: %d\n", data->map->map_height);
 	printf("player: %d,%d\n", data->player[0], data->player[1]);
 	printf("player_dir: %c\n", data->player_dir);
+	ft_init_mlx(data);
 	ft_free(data, NULL);
 	return (0);
 }
