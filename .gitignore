@@ -5,6 +5,8 @@
 
 .DS_Store
 .vscode/
+deneme.c
+a.out
 # User-specific files
 *.rsuser
 *.suo

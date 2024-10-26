@@ -3,117 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/17 17:24:01 by ekose            ###   ########.fr       */
+/*   Created: 2024/10/19 16:34:49 by mehmyilm          #+#    #+#             */
+/*   Updated: 2024/10/21 15:57:41 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-// static void ft_check_texture(t_data *data)
-// {
-// 	int	fd[4];
-// 	int i;
-// 	int check;
-	
-// 	i = -1;
-// 	check = 0;
-// 	fd[++i] = open(data->texture->north, O_RDONLY, 777);
-// 	fd[++i] = open(data->texture->south, O_RDONLY, 777);
-// 	fd[++i] = open(data->texture->west, O_RDONLY, 777);
-// 	fd[++i] = open(data->texture->east, O_RDONLY, 777);
-// 	while(i >= 0)
-// 	{
-// 		if(fd[i] == -1)
-// 			check++;
-// 		close(fd[i]);
-// 		i--;
-// 	}
-// 	if(check != 0)
-// 		ft_free(data, "Texture file not found");
-// }
-static void ft_check_rgb(t_data *data, char **rgb)
+void	ft_check_wall(t_data *data, char **map)
 {
-	int	i;
-	int	j;
-	
+	int		i;
+	int		j;
+
 	i = -1;
-	while (rgb[++i])
+	//ilk satır ve son satırda 0 olmamalı
+	if (ft_strchr(map[0], '0')
+		|| ft_strchr(map[data->map->map_height -1], '0'))
+		ft_free(data, "Map must be surrounded by walls");
+	while (map[++i])
 	{
+		// mapin sağı solu boşluk  ve 1 den farklı bir karakter olmamalı.
 		j = -1;
-		while ((rgb[i][++j]))
+		if ((map[i][0] != '1' && map[i][0] != ' ')
+			|| (map[i][ft_strlen(map[i]) - 1] != '1'
+			&& map[i][ft_strlen(map[i]) - 1] != ' '))
+			ft_free(data, "Map must be surrounded by walls");
+		while (map[i][++j])
 		{
-			if (!ft_isdigit((rgb[i][j])))
-			{
-				if (rgb[i][j] == '-')
-					ft_free(data, "RGB value must be between 0 and 255");
-				if (!((rgb[i][j] >= 9 && rgb[i][j] <= 13) || rgb[i][j] == 32))
-					ft_free(data, "RGB value must be digit");
-			}
+			// 0 ın aşağısı yukarısı boş olamaz
+			if (map[i][j] == '0'
+				&& ((i +1 < data->map->map_height
+				&& (!map[i +1][j] || j > (int)ft_strlen(map[i +1])))
+				|| (i -1 >= 0 && (!map[i - 1][j]
+				|| j > (int)ft_strlen(map[i - 1])))))
+				ft_free(data, "Map must be surrounded by walls");
 		}
 	}
 }
-static void ft_convert_rgb(t_data *data, char **rgb, char c)
-{
-	int i;
 
-	i = -1;
-	ft_check_rgb(data, rgb);
-	while (rgb[++i])
-	{
-		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
-			ft_free(data, "RGB value must be between 0 and 255");
-	}
-	i = -1;
-	while (rgb[++i])
-	{
-		if (c == 'F')
-			data->texture->floor_color[i] = ft_atoi(rgb[i]);
-		else if (c == 'C')
-			data->texture->ceiling_color[i] = ft_atoi(rgb[i]);
-	}	
-}
-static char **ft_clean_rgb(t_data *data, char **str)
+void	ft_check_char(t_data *data, char *line)
 {
-	int	i;
-	char	**tmp;
-	
-	i = -1;
-	tmp = malloc(sizeof(char *) * 4);
-	if(tmp == NULL)
-		ft_free(data, "Malloc error");
-	while(str[++i])
-	{
-		tmp[i] = ft_strtrim(str[i], " ");
-		free(str[i]);
-		if (tmp[i] == NULL)
-			ft_free(data, "Malloc error");
-	}
-	tmp[i] = NULL;
-	free(str);
-	if (i != 3)
-		ft_free(data, "RGB value must be 3");
-	return (tmp);
-}
-void ft_parse_map(char *av, t_data *data)
-{	
-	size_t		i;
-	int			fd;
+	int			i;
+	int			check;
+	char		*tmp;
 
-	data->argv = av;
-	i = ft_strlen(data->argv) - 4;
-	if (ft_strncmp(&(data->argv[i]), ".cub", 4) != 0 && i != 0)
-		ft_free(data, "Invalid file extension");
-	fd = open(data->argv, O_RDONLY, 777);
-	if(fd == -1)
-		ft_free(data, "File not found");
-	ft_read_map(data);
-	// ft_check_texture(data);
-	data->texture->floor = ft_clean_rgb(data, data->texture->floor);
-	data->texture->ceiling = ft_clean_rgb(data, data->texture->ceiling);
-	ft_convert_rgb(data, data->texture->floor , 'F');
-	ft_convert_rgb(data, data->texture->ceiling, 'C');
-	
+	check = 0;
+	i = 0;
+	tmp = ft_strtrim(line, "\n");
+	if (data->map->map_width < (int) ft_strlen(line))
+		data->map->map_width = (int) ft_strlen(line);
+	while (tmp[i] && (tmp[i] == ' '))
+		i++;
+	// if (i == (int)ft_strlen(tmp) && i != 0)
+	// 	ft_free(data, "Map must be surrounded by walls");
+	while (tmp[i])
+	{
+		if (tmp[i] != 'N' && tmp[i] != 'S' && tmp[i] != 'E' && tmp[i] != 'W'
+			&& tmp[i] != '0' && tmp[i] != '1' && tmp[i] != ' ' && tmp[i] != '\n')
+			check++;
+		i++;
+	}
+	free(tmp);
+	if (check > 0)
+		ft_free(data, "Invalid map character");
+}
+void	ft_check_line(t_data *data)
+{
+	t_list	*tmp;
+	char	*line;
+
+	tmp = data->node;
+	while (tmp)
+	{
+		line = (char *)tmp->content;
+		if (ft_strlen(line) == 1 && line[0] == '\n')
+		{
+			tmp = tmp->next;
+			while (tmp)
+			{
+				line = (char *)tmp->content;
+				if (ft_strlen(line) != 1 && line[0] != '\n')
+					ft_free(data, "Invalid map");
+				tmp = tmp->next;
+			}
+		}
+		if (tmp)
+			tmp = tmp->next;
+	}
 }

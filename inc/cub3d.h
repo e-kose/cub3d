@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/17 17:59:03 by ekose            ###   ########.fr       */
+/*   Updated: 2024/10/24 19:07:37 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,36 @@
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
 
+typedef struct s_mlx
+{
+    void    *mlx;
+    void    *win;
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}   t_mlx;
+
 typedef struct s_map
 {
 	char	**map;
+	char	**cpymap;
 	char	*_1d_map;
 	int		map_width;
 	int		map_height;
+	int		space_count;
 
 }	t_map;
+
 typedef struct s_texture
 {
 	char	*north;
 	char	*south;
 	char	*west;
 	char	*east;
-	char 	**floor;
-	char 	**ceiling;
+	char	**floor;
+	char	**ceiling;
 	int		txt_count[6];
 	int		floor_color[3];
 	int		ceiling_color[3];
@@ -51,19 +65,35 @@ typedef struct s_texture
 
 typedef struct s_data
 {
-	t_map 		*map;
+	t_map		*map;
 	t_texture	*texture;
-	char 		*argv;
-	int 		*player;
-	char 		player_dir;
-	int 		fd;
+	t_list		*node;
+	t_mlx		*mlx;
+	char		*argv;
+	int			player[2];
+	char		player_dir;
+	int			fd;
 }	t_data;
-
 
 void	ft_error_msg(char *s);
 int		ft_strcmp(char *s1, char *s2);
-void 	ft_read_map(t_data *data);
-void 	ft_parse_map(char *av, t_data *data);
-void 	ft_free(t_data *data, char *s);
-void	ft_check_line(t_data *data, char *line);
+void	ft_read_map(t_data *data);
+void	ft_parse_map(char *av, t_data *data);
+void	ft_free(t_data *data, char *s);
+void	ft_check_char(t_data *data, char *line);
+void	ft_fill_space(t_map *map);
+void	ft_print_double_str(char **str);
+void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
+void	ft_check_fill(t_data *data, int i, int j);
+void	ft_check_space(t_data *data);
+void	ft_free_double_str(char **s);
+void	ft_check_wall(t_data *data, char **map);
+void	ft_take_map(t_list **node, char *line);
+int		ft_check_texture_count(t_data *data);
+void	ft_take_texture(t_data *data, char *line, int *i);
+char	**ft_clean_rgb(t_data *data, char **str);
+void	ft_convert_rgb(t_data *data, char **rgb, char c);
+void	ft_check_line(t_data *data);
+void	ft_init_mlx(t_data *data);
+void ft_put_pixel(t_data *data, int x, int y, int color);
 #endif
