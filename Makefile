@@ -2,7 +2,8 @@ NAME = cub3d
 
 SRCS = inc/GNL/get_next_line.c cub3d.c utils/free.c utils/error.c \
        utils/utils.c utils/read_map.c utils/parse_map.c utils/flod_fill.c \
-       utils/check_map.c utils/rgb_utils.c utils/texture_utils.c raycast/raycast.c 
+       utils/check_map.c utils/rgb_utils.c utils/texture_utils.c raycast/mlx_tools.c \
+	   raycast/raycast.c
 
 OBJS = $(SRCS:.c=.o)
 CC = gcc

@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:58:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 14:06:03 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:36:58 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static	void ft_map_feature(t_data *data)
 			if (data->map->map[i][j] == 'N' || data->map->map[i][j] == 'S'
 				|| data->map->map[i][j] == 'E' || data->map->map[i][j] == 'W')
 			{
-				data->player[0] = i;
-				data->player[1] = j;
+				data->plyr_loc[0] = i;
+				data->plyr_loc[1] = j;
 				data->player_dir = data->map->map[i][j];
 				count++;
 			}
@@ -70,7 +70,7 @@ void	ft_read_map(t_data *data)
 
 	data->fd = open(data->argv, O_RDONLY);
 	line = get_next_line(data->fd);
-	while(line != NULL)
+	while (line != NULL)
 	{
 		i = 0;
 		if (ft_check_texture_count(data) == 1)
@@ -88,6 +88,8 @@ void	ft_read_map(t_data *data)
 	if (ft_check_texture_count(data) == 0)
 		ft_free(data, "Texture count error");
 	ft_map_feature(data);
+	data->player->loc_x = (double)data->plyr_loc[1];
+	data->player->loc_y = (double)data->plyr_loc[0];
 }
 void	ft_take_map(t_list **node, char *line)
 {

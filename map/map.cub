@@ -1,13 +1,13 @@
-SO ./path_to_the_south_texture
+SO ./textures/bonewall.xpm
 
-NO ./path_to_the_north_texture
-
-
-WE ./path_to_the_west_texture
-EA			./path_to_the_east_texture
+NO ./textures/checker.xpm
 
 
-F 220,00, 0
+WE ./textures/pattern2.xpm
+EA			./textures/floorboards.xpm
+
+
+F 0, 255, 0
 C 225,30,0
 
 

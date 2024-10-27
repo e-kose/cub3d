@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/24 19:02:31 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/27 15:43:50 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static void	ft_init(t_data *data)
 	i = -1;
 	data->map = malloc(sizeof(t_map));
 	data->texture = malloc(sizeof(t_texture));
-	if (data->map == NULL || data->texture == NULL)
+	data->player = malloc(sizeof(t_player));
+	if (data->map == NULL || data->texture == NULL
+		|| data->player == NULL)
 		ft_error_msg("Malloc error");
 	data->map->_1d_map = ft_strdup("\n");
 	data->map->map = NULL;
@@ -35,6 +37,7 @@ static void	ft_init(t_data *data)
 	data->texture->east = NULL;
 	data->texture->floor = NULL;
 	data->texture->ceiling = NULL;
+	data->mlx = NULL;
 }
 int	main(int ac, char **av)
 {
@@ -58,8 +61,8 @@ int	main(int ac, char **av)
 	// printf("copymap:\n");
 	// ft_print_double_str(data->map->cpymap);
 	ft_print_double_str(data->map->map);
-	printf("Map height: %d\n", data->map->map_height);
-	printf("player: %d,%d\n", data->player[0], data->player[1]);
+	// printf("Map height: %d\n", data->map->map_height);
+	// printf("player: %d,%d\n", data->player[0], data->player[1]);
 	printf("player_dir: %c\n", data->player_dir);
 	ft_init_mlx(data);
 	ft_free(data, NULL);
