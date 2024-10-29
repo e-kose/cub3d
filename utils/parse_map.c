@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/27 15:44:06 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:01:14 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	ft_init_player_e_w(t_data *data)
 {
-	if (data->player_dir == 'E')
+	if (data->player_dir == 'W')
 	{
 		data->player->dir_x = -1;
 		data->player->dir_y = 0;
 		data->player->plane_x = 0;
 		data->player->plane_y = -0.66;
 	}
-	else if (data->player_dir == 'W')
+	else if (data->player_dir == 'E')
 	{
 		data->player->dir_x = 1;
 		data->player->dir_y = 0;
@@ -32,14 +32,14 @@ static void	ft_init_player_e_w(t_data *data)
 
 static void	ft_init_player_n_s(t_data *data)
 {
-	if (data->player_dir == 'N')
+	if (data->player_dir == 'S')
 	{
 		data->player->dir_x = 0;
 		data->player->dir_y = -1;
 		data->player->plane_x = 0.66;
 		data->player->plane_y = 0;
 	}
-	else if (data->player_dir == 'S')
+	else if (data->player_dir == 'N')
 	{
 		data->player->dir_x = 0;
 		data->player->dir_y = 1;

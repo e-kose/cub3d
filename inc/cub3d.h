@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/27 18:57:12 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:02:30 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,31 @@
 # include "GNL/get_next_line.h"
 # define WIDTH 1600
 # define HEIGHT 1200
+
+typedef struct s_raycast
+{
+	double		camera_x;
+	double		raydir_x;
+	double		raydir_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	int			step_x;
+	int			step_y;
+	int			side1;
+	int			hit;
+
+	int			tex_x;
+	int			tex_y;
+
+	double		perp_dist;
+	int			height;
+	int			start_y;
+	int			end_y;
+}	t_raycast;
+
+
 typedef struct s_key
 {
 	int	w;
@@ -46,6 +71,8 @@ typedef struct s_player
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
+	int			loc_ipx;
+	int			loc_ipy;
 }	t_player;
 
 typedef struct s_mlx
@@ -103,6 +130,7 @@ typedef struct s_data
 	t_player	*player;
 	t_img		*img[4];
 	t_key		*key;
+	t_raycast	*raycast;
 	char		*argv;
 	int			plyr_loc[2];
 	char		player_dir;
@@ -136,6 +164,7 @@ int		ft_key_pressed(int keycode, t_data *data);
 int		ft_key_released(int keycode, t_data *data);
 void	ft_move_ws(t_data *data, int direction);
 void	ft_move_ad(t_data *data, int direction);
-// void	ft_rotate_player(t_data *data, int direction);
-
+void	ft_rotate_player(t_data *data, int direction);
+void	ft_init_raycast(t_data *data, int x);
+void	ft_calc_side(t_data *data);
 #endif

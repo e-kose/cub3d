@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:04:29 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/27 18:57:04 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:29:08 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ void	ft_move_ad(t_data *data, int direction)
 		data->player->loc_y = des_y;
 }
 
-// void	ft_rotate_player(t_data *data, int direction)
-// {
-// 	double	old_dirx;
-// 	double	old_planex;
-// 	double	rotate_angle;
+void	ft_rotate_player(t_data *data, int direction)
+{
+	double	old_dirx;
+	double	old_planex;
+	double	rotate_angle;
 
-// 	rotate_angle = 0.05 * direction;
-// 	old_dirx = data->player->dir_x;
-// 	data->player->dir_x = data->player->dir_x * cos(rotate_angle)
-// 		- data->player->dir_y * sin(rotate_angle);
-// 	data->player->dir_y = old_dirx * sin(rotate_angle)
-// 		+ data->player->dir_y * cos(rotate_angle);
-// 	old_planex = data->player->plane_x;
-// 	data->player->plane_x = data->player->plane_x * cos(rotate_angle)
-// 		- data->player->plane_y * sin(rotate_angle);
-// 	data->player->plane_y = old_planex * sin(rotate_angle)
-// 		+ data->player->plane_y * cos(rotate_angle);
-// }
+	rotate_angle = 0.05 * direction;
+	old_dirx = data->player->dir_x;
+	data->player->dir_x = data->player->dir_x * cos(rotate_angle)
+		- data->player->dir_y * sin(rotate_angle);
+	data->player->dir_y = old_dirx * sin(rotate_angle)
+		+ data->player->dir_y * cos(rotate_angle);
+	old_planex = data->player->plane_x;
+	data->player->plane_x = data->player->plane_x * cos(rotate_angle)
+		- data->player->plane_y * sin(rotate_angle);
+	data->player->plane_y = old_planex * sin(rotate_angle)
+		+ data->player->plane_y * cos(rotate_angle);
+}

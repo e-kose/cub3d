@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 15:36:42 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/27 17:30:53 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:40:56 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,17 @@ int	ft_game_handler(void *param)
 	data = (t_data *)param;
 	x = 0;
 	ft_put_floor_ceiling(data);
-	player_game(data);
-	// while (x < WIDTH)
-	// {
-	// 	calc_ray(data, x);
-	// 	dda(data);
-	// 	calc_wall(data);
-	// 	map_line(data, x);
-	// 	x++;
-	// }
-	// mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-	// 	data->mlx->img, 0, 0);
+	ft_player_move(data);//roteta bakk
+	while (x < WIDTH)
+	{
+		ft_init_raycast(data, x);
+		ft_calc_side(data);
+		// dda(data);
+		// calc_wall(data);
+		// map_line(data, x);
+		x++;
+	}
+	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
+		data->mlx->img, 0, 0);
 	return (0);
 }

@@ -6,23 +6,17 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/27 15:43:50 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:52:56 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/cub3d.h"
 
-static void	ft_init(t_data *data)
+static void	ft_init_value(t_data *data)
 {
 	int	i;
 
 	i = -1;
-	data->map = malloc(sizeof(t_map));
-	data->texture = malloc(sizeof(t_texture));
-	data->player = malloc(sizeof(t_player));
-	if (data->map == NULL || data->texture == NULL
-		|| data->player == NULL)
-		ft_error_msg("Malloc error");
 	data->map->_1d_map = ft_strdup("\n");
 	data->map->map = NULL;
 	data->node = NULL;
@@ -39,6 +33,20 @@ static void	ft_init(t_data *data)
 	data->texture->ceiling = NULL;
 	data->mlx = NULL;
 }
+static void ft_init(t_data *data)
+{
+	data->map = malloc(sizeof(t_map));
+	data->texture = malloc(sizeof(t_texture));
+	data->player = malloc(sizeof(t_player));
+	data->key = malloc(sizeof(t_key));
+	data->raycast = malloc(sizeof(t_raycast));
+	if (data->map == NULL || data->texture == NULL
+		|| data->player == NULL || data->key == NULL
+		|| data->raycast == NULL)
+		ft_error_msg("Malloc error");
+	ft_init_value(data);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;

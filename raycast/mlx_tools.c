@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:56:39 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/27 17:28:22 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:31:35 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	ft_init_mlx(t_data *data)
 		ft_free(data, "Image creation failed");
 	ft_set_img(data);
 	mlx_loop_hook(data->mlx->mlx, ft_game_handler, data);
-	// mlx_hook(data->mlx->win, 3, 0, key_released, data);
-	// mlx_hook(data->mlx->win, 2, 0, key_pressed, data);
-	// mlx_hook(data->mlx->win, 17, 0, exit_game, data);
+	mlx_hook(data->mlx->win, 3, 0, ft_key_released, data);
+	mlx_hook(data->mlx->win, 2, 0, ft_key_pressed, data);
+	// mlx_hook(data->mlx->win, 17, 0, ftexit_game, data);
 	mlx_loop(data->mlx->mlx);
 }
