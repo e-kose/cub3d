@@ -12,10 +12,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
-    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz
+    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz -fsanitize=address
     MLX_DIR = inc/mlx_linux
 else ifeq ($(UNAME_S), Darwin)
-    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit
+    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit -fsanitize=address
     MLX_DIR = inc/mlx_mac
 endif
 

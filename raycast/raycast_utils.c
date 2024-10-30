@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:41:35 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/29 19:03:27 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:23:39 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 void	ft_init_raycast(t_data *data, int x)
 {
 	data->raycast->camera_x = 2 * x / (double)WIDTH - 1;
+	// pikselin kordinatlarını hesaplıyoruz
 	data->raycast->raydir_x = data->player->dir_x
 		+ data->player->plane_x * data->raycast->camera_x;
 	data->raycast->raydir_y = data->player->dir_y
 		+ data->player->plane_y * data->raycast->camera_x;
-	data->player->loc_ipx = (int)data->plyr_loc[0];
-	data->player->loc_ipy = (int)data->plyr_loc[1];
+	data->player->loc_ipx = (int)data->plyr_loc[1];
+	data->player->loc_ipy = (int)data->plyr_loc[0];
 	data->raycast->deltadist_x = fabs(1 / data->raycast->raydir_x);
 	data->raycast->deltadist_y = fabs(1 / data->raycast->raydir_y);
+	//hesaplanan raydir_x ve raydir_y nin hangi yöne gideceğini belirliyoruz. yani
+	// yani playerden o piksele hangi açıyla ışının nasıl gideceğini hesaplıyoruz
 	data->raycast->hit = 0;
 }
 

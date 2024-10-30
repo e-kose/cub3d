@@ -6,13 +6,13 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/29 18:01:14 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:46:45 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static void	ft_init_player_e_w(t_data *data)
+static void	ft_init_player_pos(t_data *data)
 {
 	if (data->player_dir == 'W')
 	{
@@ -30,23 +30,23 @@ static void	ft_init_player_e_w(t_data *data)
 	}
 }
 
-static void	ft_init_player_n_s(t_data *data)
+void	ft_init_player(t_data *data)
 {
-	if (data->player_dir == 'S')
+	if (data->player_dir == 'N')
 	{
 		data->player->dir_x = 0;
 		data->player->dir_y = -1;
 		data->player->plane_x = 0.66;
 		data->player->plane_y = 0;
 	}
-	else if (data->player_dir == 'N')
+	else if (data->player_dir == 'S')
 	{
 		data->player->dir_x = 0;
 		data->player->dir_y = 1;
 		data->player->plane_x = -0.66;
 		data->player->plane_y = 0;
 	}
-	ft_init_player_e_w(data);
+	ft_init_player_pos(data);
 }
 void	ft_parse_map(char *av, t_data *data)
 {
@@ -71,5 +71,5 @@ void	ft_parse_map(char *av, t_data *data)
 	data->texture->ceiling = ft_clean_rgb(data, data->texture->ceiling);
 	ft_convert_rgb(data, data->texture->floor, 'F');
 	ft_convert_rgb(data, data->texture->ceiling, 'C');
-	ft_init_player_n_s(data);
+	ft_init_player(data);
 }

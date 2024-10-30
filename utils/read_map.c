@@ -6,20 +6,18 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:58:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/27 14:36:58 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:49:46 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static	void ft_map_feature(t_data *data)
+static	void ft_map_feature(t_data *data, int count)
 {
 	int	i;
 	int	j;
-	int	count;
 
 	i = -1;
-	count = 0;
 	while (data->map->map[++i])
 	{
 		j = -1;
@@ -35,8 +33,10 @@ static	void ft_map_feature(t_data *data)
 			}
 		}
 	}
-	if (count != 1)
-		ft_free(data, "Multiple player error");
+	if (count == 0 && i == 0)
+		ft_free(data, "Map not found");
+	else if (count != 1)
+		ft_free(data, "Player error");
 	data->map->map_height = i;
 }
 
@@ -87,7 +87,7 @@ void	ft_read_map(t_data *data)
 	data->map->map = ft_split(data->map->_1d_map, '\n');
 	if (ft_check_texture_count(data) == 0)
 		ft_free(data, "Texture count error");
-	ft_map_feature(data);
+	ft_map_feature(data, 0);
 	data->player->loc_x = (double)data->plyr_loc[1];
 	data->player->loc_y = (double)data->plyr_loc[0];
 }
