@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:53:00 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/29 19:04:43 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/02 19:07:05 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	ft_mlx_free(t_data *data)
 	if (data->mlx == NULL)
 		return ;
 	if (data->mlx->win != NULL)
-		mlx_destroy_window(data->mlx->mlx, data->mlx->win);
+		mlx_destroy_window(data->mlx->mlx_ptr, data->mlx->win);
 	if (data->mlx->img != NULL)
-		mlx_destroy_image(data->mlx->mlx, data->mlx->img);
+		mlx_destroy_image(data->mlx->mlx_ptr, data->mlx->img);
 	free(data->mlx);
 }
 

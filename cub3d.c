@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/29 18:52:56 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/02 19:06:39 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ static void	ft_init_value(t_data *data)
 	data->texture->floor = NULL;
 	data->texture->ceiling = NULL;
 	data->mlx = NULL;
+	data->key->w = 0;
+	data->key->a = 0;
+	data->key->s = 0;
+	data->key->d = 0;
+	data->key->left = 0;
+	data->key->right = 0;
+	data->raycast->hit = 0;
 }
 static void ft_init(t_data *data)
 {

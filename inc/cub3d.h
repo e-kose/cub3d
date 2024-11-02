@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/29 19:02:30 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/02 14:29:46 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
-# define WIDTH 1600
-# define HEIGHT 1200
+# define WIDTH 1500
+# define HEIGHT 1000
 
 typedef struct s_raycast
 {
@@ -77,7 +77,7 @@ typedef struct s_player
 
 typedef struct s_mlx
 {
-	void	*mlx;
+	void	*mlx_ptr;
 	void	*win;
 	void	*img;
 	int		*addr;

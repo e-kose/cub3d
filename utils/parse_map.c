@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/30 18:46:45 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/02 19:03:45 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	ft_init_player_pos(t_data *data)
 
 void	ft_init_player(t_data *data)
 {
+	data->map->map[data->plyr_loc[0]][data->plyr_loc[1]] = '0';
 	if (data->player_dir == 'N')
 	{
 		data->player->dir_x = 0;

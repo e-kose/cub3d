@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 15:36:42 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/30 18:42:05 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/02 18:45:28 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ int	ft_game_handler(void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
+	// printf("loc_x: %d, hit: %d\n", data->raycast->step_x, data->raycast->step_y);
 	i = 0;
 	ft_put_floor_ceiling(data);
 	ft_player_move(data);//roteta bakk
@@ -147,7 +148,7 @@ int	ft_game_handler(void *param)
 		ft_map_line(data, i);
 		i++;
 	}
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
+	mlx_put_image_to_window(data->mlx->mlx_ptr, data->mlx->win,
 		data->mlx->img, 0, 0);
 	return (0);
 }
