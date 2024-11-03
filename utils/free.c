@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:53:00 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/02 19:07:05 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 15:08:37 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+int		ft_exit_game(void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	ft_free(data, NULL);
+	return (0);
+}
+
 void	ft_free_list(t_data *data)
 {
 	t_list	*tmp;
@@ -36,11 +45,8 @@ void ft_free_double_str(char **s)
 		free(s[i]);
 		i++;
 	}
-	{
-		free(s[i]);
-		i++;
-	}
 	free(s);
+	s = NULL;
 }
 static void ft_free_map(t_data *data)
 {
@@ -51,6 +57,7 @@ static void ft_free_map(t_data *data)
 	if (data->map->cpymap != NULL)
 		ft_free_double_str(data->map->cpymap);
 	free(data->map);
+	data->map = NULL;
 }
 static void ft_free_texture(t_data *data)
 {
@@ -66,30 +73,48 @@ static void ft_free_texture(t_data *data)
 		ft_free_double_str(data->texture->floor);
 	if (data->texture->ceiling != NULL)
 		ft_free_double_str(data->texture->ceiling);
+	data->texture->ceiling = NULL;
+	data->texture->floor = NULL;
 	free(data->texture);
 }
 
 void	ft_mlx_free(t_data *data)
 {
+	int	i;
+	
+	i = 0;
 	if (data->mlx == NULL)
 		return ;
 	if (data->mlx->win != NULL)
 		mlx_destroy_window(data->mlx->mlx_ptr, data->mlx->win);
 	if (data->mlx->img != NULL)
 		mlx_destroy_image(data->mlx->mlx_ptr, data->mlx->img);
+	while (i < 4)
+	{
+		if (data->img[i] != NULL)
+		{
+			if (data->img[i]->img != NULL)
+				mlx_destroy_image(data->mlx->mlx_ptr, data->img[i]->img);
+			free(data->img[i]);
+		}
+		i++;
+	}
 	free(data->mlx);
+	data->mlx = NULL;
 }
 
 void	ft_free(t_data *data, char *s)
 {
-	ft_free_texture(data);
-	ft_free_map(data);
-	ft_free_list(data);
 	ft_mlx_free(data);
-	free(data->player);
 	free(data->key);
+	ft_free_texture(data);
+	ft_free_list(data);
 	free(data->raycast);
+	free(data->player);
+	ft_free_map(data);
 	free(data);
+	data = NULL;
 	if (s != NULL)
 		ft_error_msg(s);
+	exit(0);
 }

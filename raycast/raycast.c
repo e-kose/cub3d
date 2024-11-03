@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 15:36:42 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/02 18:45:28 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 15:11:02 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static void	ft_put_floor_ceiling(t_data *data)
 	while (i < HEIGHT)
 	{
 		j = 0;
-		while (j < WIDTH)
+		while (j < WIDTH) 
 		{
 			data->mlx->addr[i * WIDTH + j] = data->texture->floor_color;
 			j++;

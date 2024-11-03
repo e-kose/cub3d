@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/02 19:06:39 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:07:10 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	ft_init_value(t_data *data)
 	data->key->right = 0;
 	data->raycast->hit = 0;
 }
-static void ft_init(t_data *data)
+static void	ft_init(t_data *data)
 {
 	data->map = malloc(sizeof(t_map));
 	data->texture = malloc(sizeof(t_texture));
@@ -76,8 +76,6 @@ int	main(int ac, char **av)
 	// printf("copymap:\n");
 	// ft_print_double_str(data->map->cpymap);
 	ft_print_double_str(data->map->map);
-	// printf("Map height: %d\n", data->map->map_height);
-	// printf("player: %d,%d\n", data->player[0], data->player[1]);
 	printf("player_dir: %c\n", data->player_dir);
 	ft_init_mlx(data);
 	ft_free(data, NULL);

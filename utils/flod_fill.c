@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   flod_fill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 12:39:08 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/21 17:53:37 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:04:04 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	ft_fill_space(t_map *map)
+void	ft_fill_space(t_data *data)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_map	*map;
 
+	map = data->map;
 	map->cpymap = malloc(sizeof(char *) * (map->map_height + 1));
 	if (!map->cpymap)
 		ft_error_msg("Malloc eror");
@@ -43,7 +45,6 @@ void	ft_check_space(t_data *data)
 	int		i;
 	int		j;
 
-	// ft_free_double_str(data->map->cpymap); // copymap kullanırsan bunu kaldır
 	map = data->map->map;
 	i = -1;
 	while (map[++i])

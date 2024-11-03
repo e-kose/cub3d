@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:04:29 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/02 18:58:16 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 15:18:50 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	ft_move_ws(t_data *data, int direction)
 	double	des_x;
 	double	des_y;
 
-	des_x = data->player->loc_x + data->player->dir_x * (double)2 / 10 * direction;
-	des_y = data->player->loc_y + data->player->dir_y * (double)2 / 10 * direction;
-	printf("des_x: %f, des_y: %f\n", des_x, des_y);
-	printf("map %c\n", data->map->map[(int)data->player->loc_y][(int)des_x] );
+	des_x = data->player->loc_x + data->player->dir_x * (double)2 / 35 * direction;
+	des_y = data->player->loc_y + data->player->dir_y * (double)2 / 35 * direction;
 	if (data->map->map[(int)data->player->loc_y][(int)des_x] == '0')
 		data->player->loc_x = des_x;
 	if (data->map->map[(int)des_y][(int)data->player->loc_x] == '0')
@@ -33,9 +31,9 @@ void	ft_move_ad(t_data *data, int direction)
 	double	des_y;
 
 	des_x = data->player->loc_x + data->player->plane_x
-		* (double)2 / 10 * direction;
+		* (double)2 / 35 * direction;
 	des_y = data->player->loc_y + data->player->plane_y
-		* (double)2 / 10 * direction;
+		* (double)2 / 35 * direction;
 	if (data->map->map[(int)data->player->loc_y][(int)des_x] == '0')
 		data->player->loc_x = des_x;
 	if (data->map->map[(int)des_y][(int)data->player->loc_x] == '0')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/02 19:03:45 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:01:24 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_parse_map(char *av, t_data *data)
 		ft_free(data, "File not found");
 	ft_read_map(data);
 	ft_check_wall(data, data->map->map);
-	ft_fill_space(data->map);
+	ft_fill_space(data);
 	ft_flood_fill(data->plyr_loc[0], data->plyr_loc[1], data->map);
 	ft_check_fill(data, -1, -1);
 	ft_check_texture(data);

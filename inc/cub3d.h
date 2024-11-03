@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/02 14:29:46 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:01:11 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # ifdef __linux__
 #  include "mlx_linux/mlx.h"
 #  define LIB_NAME "Linux Library"
+#	include <X11/X.h>
 # else
 #  include "mlx_mac/mlx.h"
 #  define LIB_NAME "Mac Library"
@@ -143,7 +144,7 @@ void	ft_read_map(t_data *data);
 void	ft_parse_map(char *av, t_data *data);
 void	ft_free(t_data *data, char *s);
 void	ft_check_char(t_data *data, char *line);
-void	ft_fill_space(t_map *map);
+void	ft_fill_space(t_data *data);
 void	ft_print_double_str(char **str);
 void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
 void	ft_check_fill(t_data *data, int i, int j);
@@ -160,11 +161,14 @@ void	ft_init_mlx(t_data *data);
 void	ft_check_texture(t_data *data);
 int		ft_game_handler(void *param);
 void	ft_player_move(t_data *data);
-int		ft_key_pressed(int keycode, t_data *data);
-int		ft_key_released(int keycode, t_data *data);
+int		ft_key_pressed_mac(int keycode, t_data *data);
+int		ft_key_released_mac(int keycode, t_data *data);
+int		ft_key_pressed_linux(int keycode, t_data *data);
+int		ft_key_released_linux(int keycode, t_data *data);
 void	ft_move_ws(t_data *data, int direction);
 void	ft_move_ad(t_data *data, int direction);
 void	ft_rotate_player(t_data *data, int direction);
 void	ft_init_raycast(t_data *data, int x);
 void	ft_calc_side(t_data *data);
+int		ft_exit_game(void *data);
 #endif

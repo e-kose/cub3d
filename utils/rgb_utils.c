@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:43:10 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/30 17:57:40 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:14:33 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	**ft_clean_rgb(t_data *data, char **str)
 			ft_free(data, "RGB value must be between 0 and 255");
 		}
 	}
+	ft_free_double_str(str);
 	return (tmp);
 }
 
