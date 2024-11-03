@@ -6,11 +6,12 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:43:10 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/21 13:16:08 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:57:40 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
 static void	ft_check_rgb(t_data *data, char **rgb)
 {
 	int	i;
@@ -38,21 +39,26 @@ char	**ft_clean_rgb(t_data *data, char **str)
 	int		i;
 	char	**tmp;
 
+	i = 0;
+	while (str[i])
+		i++;
+	if (i != 3)
+		ft_free(data, "RGB value must be 3");
 	i = -1;
 	tmp = malloc(sizeof(char *) * 4);
 	if (tmp == NULL)
 		ft_free(data, "Malloc error");
 	while (str[++i])
-	{
 		tmp[i] = ft_strtrim(str[i], " ");
-		free(str[i]);
-		if (tmp[i] == NULL)
-			ft_free(data, "Malloc error");
-	}
 	tmp[i] = NULL;
-	free(str);
-	if (i != 3)
-		ft_free(data, "RGB value must be 3");
+	while (--i)
+	{
+		if (ft_strlen(tmp[i]) == 0)
+		{
+			ft_free_double_str(tmp);
+			ft_free(data, "RGB value must be between 0 and 255");
+		}
+	}
 	return (tmp);
 }
 
@@ -68,12 +74,11 @@ void	ft_convert_rgb(t_data *data, char **rgb, char c)
 		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
 			ft_free(data, "RGB value must be between 0 and 255");
 	}
-	i = -1;
-	while (rgb[++i])
-	{
-		if (c == 'F')
-			data->texture->floor_color[i] = ft_atoi(rgb[i]);
-		else if (c == 'C')
-			data->texture->ceiling_color[i] = ft_atoi(rgb[i]);
-	}
+	if (c == 'F')
+		data->texture->floor_color = (ft_atoi(rgb[0]) << 16)
+			+ (ft_atoi(rgb[1]) << 8) + ft_atoi(rgb[2]);
+	else if (c == 'C')
+		data->texture->ceiling_color = (ft_atoi(rgb[0]) << 16)
+			+ (ft_atoi(rgb[1]) << 8) + ft_atoi(rgb[2]);
 }
+

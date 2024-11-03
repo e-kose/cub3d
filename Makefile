@@ -2,7 +2,8 @@ NAME = cub3d
 
 SRCS = inc/GNL/get_next_line.c cub3d.c utils/free.c utils/error.c \
        utils/utils.c utils/read_map.c utils/parse_map.c utils/flod_fill.c \
-       utils/check_map.c utils/rgb_utils.c utils/texture_utils.c raycast/raycast.c 
+       utils/check_map.c utils/rgb_utils.c utils/texture_utils.c raycast/mlx_tools.c \
+	   raycast/raycast.c raycast/keycode.c raycast/movement.c raycast/raycast_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 CC = gcc
@@ -11,10 +12,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
-    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz
+    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz -fsanitize=address
     MLX_DIR = inc/mlx_linux
 else ifeq ($(UNAME_S), Darwin)
-    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit
+    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit -fsanitize=address
     MLX_DIR = inc/mlx_mac
 endif
 
@@ -36,17 +37,17 @@ $(NAME): $(OBJS)
 	@echo "\033[32mBuilding $(NAME)...\033[0m"
 	@make bonus -C inc/libft >/dev/null 2>&1
 	@make -C $(MLX_DIR) >/dev/null 2>&1
-	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME) >/dev/null 2>&1
+	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@echo "\033[32m$(NAME) build complete!\033[0m"
 
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ >/dev/null 2>&1
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "\033[0;34mCleaning object files...\033[0m"
-	@make clean -C inc/libft >/dev/null 2>&1
-	@make clean -C $(MLX_DIR) >/dev/null 2>&1
+	@make clean -C inc/libft
+	@make clean -C $(MLX_DIR)
 	@rm -rf $(OBJS)
 	@echo "\033[32mObject files cleaned.\033[0m"
 

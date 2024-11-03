@@ -6,19 +6,18 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/24 19:07:37 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/02 14:29:46 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # ifdef __linux__
-	#include "mlx_linux/mlx.h"
-	#define LIB_NAME "Linux Library"
+#  include "mlx_linux/mlx.h"
+#  define LIB_NAME "Linux Library"
 # else
-	#include "mlx_mac/mlx.h"
-	#define LIB_NAME "Mac Library"
+#  include "mlx_mac/mlx.h"
+#  define LIB_NAME "Mac Library"
 # endif
 # include <math.h>
 # include <stdio.h>
@@ -27,17 +26,65 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 # include "GNL/get_next_line.h"
+# define WIDTH 1500
+# define HEIGHT 1000
+
+typedef struct s_raycast
+{
+	double		camera_x;
+	double		raydir_x;
+	double		raydir_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	int			step_x;
+	int			step_y;
+	int			side1;
+	int			hit;
+
+	int			tex_x;
+	int			tex_y;
+
+	double		perp_dist;
+	int			height;
+	int			start_y;
+	int			end_y;
+}	t_raycast;
+
+
+typedef struct s_key
+{
+	int	w;
+	int	s;
+	int	a;
+	int	d;
+	int	left;
+	int	right;
+}	t_key;
+
+typedef struct s_player
+{
+	double		loc_x;
+	double		loc_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	int			loc_ipx;
+	int			loc_ipy;
+}	t_player;
 
 typedef struct s_mlx
 {
-    void    *mlx;
-    void    *win;
-    void    *img;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}   t_mlx;
+	void	*mlx_ptr;
+	void	*win;
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_mlx;
 
 typedef struct s_map
 {
@@ -59,9 +106,20 @@ typedef struct s_texture
 	char	**floor;
 	char	**ceiling;
 	int		txt_count[6];
-	int		floor_color[3];
-	int		ceiling_color[3];
+	int		floor_color;
+	int		ceiling_color;
 }	t_texture;
+
+typedef struct s_img
+{
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		xpm_w;
+	int		xpm_h;
+}	t_img;
 
 typedef struct s_data
 {
@@ -69,8 +127,12 @@ typedef struct s_data
 	t_texture	*texture;
 	t_list		*node;
 	t_mlx		*mlx;
+	t_player	*player;
+	t_img		*img[4];
+	t_key		*key;
+	t_raycast	*raycast;
 	char		*argv;
-	int			player[2];
+	int			plyr_loc[2];
 	char		player_dir;
 	int			fd;
 }	t_data;
@@ -95,5 +157,14 @@ char	**ft_clean_rgb(t_data *data, char **str);
 void	ft_convert_rgb(t_data *data, char **rgb, char c);
 void	ft_check_line(t_data *data);
 void	ft_init_mlx(t_data *data);
-void ft_put_pixel(t_data *data, int x, int y, int color);
+void	ft_check_texture(t_data *data);
+int		ft_game_handler(void *param);
+void	ft_player_move(t_data *data);
+int		ft_key_pressed(int keycode, t_data *data);
+int		ft_key_released(int keycode, t_data *data);
+void	ft_move_ws(t_data *data, int direction);
+void	ft_move_ad(t_data *data, int direction);
+void	ft_rotate_player(t_data *data, int direction);
+void	ft_init_raycast(t_data *data, int x);
+void	ft_calc_side(t_data *data);
 #endif

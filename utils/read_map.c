@@ -6,20 +6,18 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:58:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 14:06:03 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:43:23 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static	void ft_map_feature(t_data *data)
+static	void ft_map_feature(t_data *data, int count)
 {
 	int	i;
 	int	j;
-	int	count;
 
 	i = -1;
-	count = 0;
 	while (data->map->map[++i])
 	{
 		j = -1;
@@ -28,15 +26,17 @@ static	void ft_map_feature(t_data *data)
 			if (data->map->map[i][j] == 'N' || data->map->map[i][j] == 'S'
 				|| data->map->map[i][j] == 'E' || data->map->map[i][j] == 'W')
 			{
-				data->player[0] = i;
-				data->player[1] = j;
+				data->plyr_loc[0] = i;
+				data->plyr_loc[1] = j;
 				data->player_dir = data->map->map[i][j];
 				count++;
 			}
 		}
 	}
-	if (count != 1)
-		ft_free(data, "Multiple player error");
+	if (count == 0 && i == 0)
+		ft_free(data, "Map not found");
+	else if (count != 1)
+		ft_free(data, "Player error");
 	data->map->map_height = i;
 }
 
@@ -70,7 +70,7 @@ void	ft_read_map(t_data *data)
 
 	data->fd = open(data->argv, O_RDONLY);
 	line = get_next_line(data->fd);
-	while(line != NULL)
+	while (line != NULL)
 	{
 		i = 0;
 		if (ft_check_texture_count(data) == 1)
@@ -87,7 +87,10 @@ void	ft_read_map(t_data *data)
 	data->map->map = ft_split(data->map->_1d_map, '\n');
 	if (ft_check_texture_count(data) == 0)
 		ft_free(data, "Texture count error");
-	ft_map_feature(data);
+	ft_map_feature(data, 0);
+	data->player->loc_x = (double)data->plyr_loc[1];
+	data->player->loc_y = (double)data->plyr_loc[0];
+	printf("--->>loc_x: %f, loc_y: %f\n", data->player->loc_x, data->player->loc_y);
 }
 void	ft_take_map(t_list **node, char *line)
 {
