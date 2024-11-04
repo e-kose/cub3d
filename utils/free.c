@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:53:00 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/03 15:08:37 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:15:35 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void ft_free_texture(t_data *data)
 void	ft_mlx_free(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	if (data->mlx == NULL)
 		return ;
@@ -112,6 +112,8 @@ void	ft_free(t_data *data, char *s)
 	free(data->raycast);
 	free(data->player);
 	ft_free_map(data);
+	system("kill -9 $(cat kvp.txt)");
+	unlink("kvp.txt");
 	free(data);
 	data = NULL;
 	if (s != NULL)

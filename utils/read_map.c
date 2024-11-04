@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:58:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/02 17:43:23 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:08:00 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	ft_read_map(t_data *data)
 	ft_map_feature(data, 0);
 	data->player->loc_x = (double)data->plyr_loc[1];
 	data->player->loc_y = (double)data->plyr_loc[0];
-	printf("--->>loc_x: %f, loc_y: %f\n", data->player->loc_x, data->player->loc_y);
 }
 void	ft_take_map(t_list **node, char *line)
 {

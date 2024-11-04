@@ -6,20 +6,11 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:20:46 by ekose             #+#    #+#             */
-/*   Updated: 2024/10/21 13:17:00 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:04:18 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void	ft_print_double_str(char **str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		printf("str[%d]: %s\n",i,str[i]);
-}
 
 int	ft_strcmp(char *s1, char *s2)
 {

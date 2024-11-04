@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/03 14:01:11 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:04:29 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,6 @@ void	ft_parse_map(char *av, t_data *data);
 void	ft_free(t_data *data, char *s);
 void	ft_check_char(t_data *data, char *line);
 void	ft_fill_space(t_data *data);
-void	ft_print_double_str(char **str);
 void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map);
 void	ft_check_fill(t_data *data, int i, int j);
 void	ft_check_space(t_data *data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:56:39 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/03 15:22:17 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:09:15 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ static void	ft_xpm_to_img(t_data *data, char *path, int index)
 {
 	data->img[index] = malloc(sizeof(t_img));
 	if (!data->img[index])
-		ft_free(data,"Malloc doesn't work!");
+		ft_free(data, "Malloc doesn't work!");
 	data->img[index]->img = mlx_xpm_file_to_image(data->mlx->mlx_ptr, path,
 			&data->img[index]->xpm_w, &data->img[index]->xpm_h);
 	if (!data->img[index]->img)
-		ft_free(data,"Texture doesn't work!");
+		ft_free(data, "Texture doesn't work!");
 	data->img[index]->addr = \
 	(int *)mlx_get_data_addr(data->img[index]->img, \
 	&data->img[index]->bpp, &data->img[index]->line_length, \
 	&data->img[index]->endian);
 	if (!data->img[index]->addr)
-		ft_free(data,"Texture doesn't work!");
+		ft_free(data, "Texture doesn't work!");
 }
 
 static void	ft_set_img(t_data *data)
@@ -61,7 +61,7 @@ void	ft_init_mlx(t_data *data)
 		mlx_hook(data->mlx->win, 17, 0, ft_exit_game, data);
 	# elif defined(__linux__)
 		mlx_loop_hook(data->mlx->mlx_ptr, ft_game_handler, data);
-		mlx_hook(data->mlx->win,KeyRelease, KeyPressMask, ft_key_released_linux, data);
+		mlx_hook(data->mlx->win, KeyRelease, KeyPressMask, ft_key_released_linux, data);
 		mlx_hook(data->mlx->win, KeyPress, KeyReleaseMask, ft_key_pressed_linux, data);
 		mlx_hook(data->mlx->win, DestroyNotify, NoEventMask, ft_exit_game, data);
 	# endif

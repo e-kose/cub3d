@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 15:36:42 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/03 15:11:02 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:06:57 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static void	ft_put_floor_ceiling(t_data *data)
 	while (i < HEIGHT)
 	{
 		j = 0;
-		while (j < WIDTH) 
+		while (j < WIDTH)
 		{
 			data->mlx->addr[i * WIDTH + j] = data->texture->floor_color;
 			j++;
@@ -135,7 +135,6 @@ int	ft_game_handler(void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	// printf("loc_x: %d, hit: %d\n", data->raycast->step_x, data->raycast->step_y);
 	i = 0;
 	ft_put_floor_ceiling(data);
 	ft_player_move(data);//roteta bakk
