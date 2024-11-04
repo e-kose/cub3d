@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:39:49 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/03 14:01:24 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:30:44 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_init_player(t_data *data)
 	}
 	ft_init_player_pos(data);
 }
+
 void	ft_parse_map(char *av, t_data *data)
 {
 	size_t		i;

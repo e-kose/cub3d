@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:56:03 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/04 15:08:37 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:40:00 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	main(int ac, char **av)
 		ft_error_msg("Malloc error");
 	ft_init(data);
 	ft_parse_map(av[1], data);
-	system("afplay kvp.mp3 & ps -ax | grep -v grep |grep afplay | awk '{print $1}' > kvp.txt");
 	ft_init_mlx(data);
 	ft_free(data, NULL);
 	return (0);

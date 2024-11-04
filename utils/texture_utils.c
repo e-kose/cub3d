@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:38:10 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/27 16:48:36 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:39:27 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,3 @@ void	ft_check_texture(t_data *data)
 	if (check != 0)
 		ft_free(data, "Texture file not found");
 }
-
-

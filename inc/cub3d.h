@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/04 14:04:29 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:42:38 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # ifdef __linux__
 #  include "mlx_linux/mlx.h"
 #  define LIB_NAME "Linux Library"
-#	include <X11/X.h>
+#  include <X11/X.h>
 # else
 #  include "mlx_mac/mlx.h"
 #  define LIB_NAME "Mac Library"
@@ -52,7 +52,6 @@ typedef struct s_raycast
 	int			start_y;
 	int			end_y;
 }	t_raycast;
-
 
 typedef struct s_key
 {
@@ -162,12 +161,12 @@ int		ft_game_handler(void *param);
 void	ft_player_move(t_data *data);
 int		ft_key_pressed_mac(int keycode, t_data *data);
 int		ft_key_released_mac(int keycode, t_data *data);
-int		ft_key_pressed_linux(int keycode, t_data *data);
-int		ft_key_released_linux(int keycode, t_data *data);
 void	ft_move_ws(t_data *data, int direction);
 void	ft_move_ad(t_data *data, int direction);
 void	ft_rotate_player(t_data *data, int direction);
 void	ft_init_raycast(t_data *data, int x);
 void	ft_calc_side(t_data *data);
 int		ft_exit_game(void *data);
+void	ft_free_list(t_data *data);
+void	ft_dda(t_data *data);
 #endif

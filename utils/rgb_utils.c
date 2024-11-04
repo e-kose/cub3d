@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:43:10 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/03 14:14:33 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:39:13 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ char	**ft_clean_rgb(t_data *data, char **str)
 	return (tmp);
 }
 
-
 void	ft_convert_rgb(t_data *data, char **rgb, char c)
 {
 	int	i;
@@ -82,4 +81,3 @@ void	ft_convert_rgb(t_data *data, char **rgb, char c)
 		data->texture->ceiling_color = (ft_atoi(rgb[0]) << 16)
 			+ (ft_atoi(rgb[1]) << 8) + ft_atoi(rgb[2]);
 }
-

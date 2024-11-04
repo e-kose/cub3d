@@ -6,38 +6,15 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:53:00 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/04 14:15:35 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:40:05 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-int		ft_exit_game(void *param)
+
+void	ft_free_double_str(char **s)
 {
-	t_data	*data;
-
-	data = (t_data *)param;
-	ft_free(data, NULL);
-	return (0);
-}
-
-void	ft_free_list(t_data *data)
-{
-	t_list	*tmp;
-	t_list	*tmp2;
-
-	tmp = data->node;
-	while (tmp)
-	{
-
-		free(tmp->content);
-		tmp2 = tmp;
-		tmp = tmp->next;
-		free(tmp2);
-	}
-}
-void ft_free_double_str(char **s)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] != NULL)
@@ -48,7 +25,8 @@ void ft_free_double_str(char **s)
 	free(s);
 	s = NULL;
 }
-static void ft_free_map(t_data *data)
+
+static void	ft_free_map(t_data *data)
 {
 	if (data->map->_1d_map != NULL)
 		free(data->map->_1d_map);
@@ -59,7 +37,8 @@ static void ft_free_map(t_data *data)
 	free(data->map);
 	data->map = NULL;
 }
-static void ft_free_texture(t_data *data)
+
+static void	ft_free_texture(t_data *data)
 {
 	if (data->texture->north != NULL)
 		free(data->texture->north);
@@ -112,8 +91,6 @@ void	ft_free(t_data *data, char *s)
 	free(data->raycast);
 	free(data->player);
 	ft_free_map(data);
-	system("kill -9 $(cat kvp.txt)");
-	unlink("kvp.txt");
 	free(data);
 	data = NULL;
 	if (s != NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flod_fill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 12:39:08 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/03 14:04:04 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:17:00 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_fill_space(t_data *data)
 		map->cpymap[i] = ft_strdup(map->map[i]);
 	}
 }
+
 void	ft_check_space(t_data *data)
 {
 	char	**map;
@@ -62,11 +63,13 @@ void	ft_check_space(t_data *data)
 		}
 	}
 }
+
 void	ft_flood_fill(int plyr_y, int plyr_x, t_map *map)
 {
 	if (plyr_y < 0 || plyr_x < 0 || plyr_y >= map->map_height
 		|| plyr_x >= (int)ft_strlen(map->cpymap[plyr_y])
-		|| map->cpymap[plyr_y][plyr_x] == 'B' || map->cpymap[plyr_y][plyr_x] == 'X')
+		|| map->cpymap[plyr_y][plyr_x] == 'B'
+		|| map->cpymap[plyr_y][plyr_x] == 'X')
 		return ;
 	map->cpymap[plyr_y][plyr_x] = 'X';
 	ft_flood_fill(plyr_y +1, plyr_x, map);

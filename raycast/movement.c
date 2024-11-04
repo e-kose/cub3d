@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:04:29 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/03 15:18:50 by ekose            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:33:44 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	ft_move_ws(t_data *data, int direction)
 	double	des_x;
 	double	des_y;
 
-	des_x = data->player->loc_x + data->player->dir_x * (double)2 / 35 * direction;
-	des_y = data->player->loc_y + data->player->dir_y * (double)2 / 35 * direction;
+	des_x = data->player->loc_x + data->player->dir_x
+		* (double)2 / 35 * direction;
+	des_y = data->player->loc_y + data->player->dir_y
+		* (double)2 / 35 * direction;
 	if (data->map->map[(int)data->player->loc_y][(int)des_x] == '0')
 		data->player->loc_x = des_x;
 	if (data->map->map[(int)des_y][(int)data->player->loc_x] == '0')

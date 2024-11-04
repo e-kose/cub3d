@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:34:49 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/10/21 15:57:41 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:32:15 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ void	ft_check_wall(t_data *data, char **map)
 	int		j;
 
 	i = -1;
-	//ilk satır ve son satırda 0 olmamalı
 	if (ft_strchr(map[0], '0')
 		|| ft_strchr(map[data->map->map_height -1], '0'))
 		ft_free(data, "Map must be surrounded by walls");
 	while (map[++i])
 	{
-		// mapin sağı solu boşluk  ve 1 den farklı bir karakter olmamalı.
 		j = -1;
 		if ((map[i][0] != '1' && map[i][0] != ' ')
 			|| (map[i][ft_strlen(map[i]) - 1] != '1'
@@ -32,7 +30,6 @@ void	ft_check_wall(t_data *data, char **map)
 			ft_free(data, "Map must be surrounded by walls");
 		while (map[i][++j])
 		{
-			// 0 ın aşağısı yukarısı boş olamaz
 			if (map[i][j] == '0'
 				&& ((i +1 < data->map->map_height
 				&& (!map[i +1][j] || j > (int)ft_strlen(map[i +1])))
@@ -56,12 +53,11 @@ void	ft_check_char(t_data *data, char *line)
 		data->map->map_width = (int) ft_strlen(line);
 	while (tmp[i] && (tmp[i] == ' '))
 		i++;
-	// if (i == (int)ft_strlen(tmp) && i != 0)
-	// 	ft_free(data, "Map must be surrounded by walls");
 	while (tmp[i])
 	{
 		if (tmp[i] != 'N' && tmp[i] != 'S' && tmp[i] != 'E' && tmp[i] != 'W'
-			&& tmp[i] != '0' && tmp[i] != '1' && tmp[i] != ' ' && tmp[i] != '\n')
+			&& tmp[i] != '0' && tmp[i] != '1'
+			&& tmp[i] != ' ' && tmp[i] != '\n')
 			check++;
 		i++;
 	}
@@ -69,6 +65,7 @@ void	ft_check_char(t_data *data, char *line)
 	if (check > 0)
 		ft_free(data, "Invalid map character");
 }
+
 void	ft_check_line(t_data *data)
 {
 	t_list	*tmp;
@@ -92,4 +89,16 @@ void	ft_check_line(t_data *data)
 		if (tmp)
 			tmp = tmp->next;
 	}
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (-1);
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
 }

@@ -6,13 +6,13 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:58:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/04 14:08:00 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:38:50 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-static	void ft_map_feature(t_data *data, int count)
+static void	ft_map_feature(t_data *data, int count)
 {
 	int	i;
 	int	j;
@@ -79,7 +79,6 @@ void	ft_read_map(t_data *data)
 			ft_take_texture(data, ft_strtrim(line, "\n"), &i);
 		free(line);
 		line = get_next_line(data->fd);
-
 	}
 	free(line);
 	close(data->fd);
@@ -91,6 +90,7 @@ void	ft_read_map(t_data *data)
 	data->player->loc_x = (double)data->plyr_loc[1];
 	data->player->loc_y = (double)data->plyr_loc[0];
 }
+
 void	ft_take_map(t_list **node, char *line)
 {
 	t_list	*new_node;

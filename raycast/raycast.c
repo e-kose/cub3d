@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 15:36:42 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/04 14:06:57 by mehmyilm         ###   ########.fr       */
+/*   Created: 2024/11/04 15:43:58 by mehmyilm          #+#    #+#             */
+/*   Updated: 2024/11/04 15:44:21 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,6 @@ void	ft_calc_wall(t_data *data)
 		data->raycast->end_y = HEIGHT - 1;
 }
 
-void	ft_dda(t_data *data)
-{
-	while (data->raycast->hit == 0)
-	{
-		if (data->raycast->sidedist_x < data->raycast->sidedist_y)
-		{
-			data->raycast->sidedist_x += data->raycast->deltadist_x;
-			data->player->loc_ipx += data->raycast->step_x;
-			if (data->raycast->step_x == 1)
-				data->raycast->side1 = 1;
-			else
-				data->raycast->side1 = 0;
-		}
-		else
-		{
-			data->raycast->sidedist_y += data->raycast->deltadist_y;
-			data->player->loc_ipy += data->raycast->step_y;
-			if (data->raycast->step_y == 1)
-				data->raycast->side1 = 2;
-			else
-				data->raycast->side1 = 3;
-		}
-		if (data->map->map[data->player->loc_ipy][data->player->loc_ipx] == '1')
-			data->raycast->hit = 1;
-	}
-}
 static void	ft_put_floor_ceiling(t_data *data)
 {
 	int	i;
@@ -137,7 +111,7 @@ int	ft_game_handler(void *param)
 	data = (t_data *)param;
 	i = 0;
 	ft_put_floor_ceiling(data);
-	ft_player_move(data);//roteta bakk
+	ft_player_move(data);
 	while (i < WIDTH)
 	{
 		ft_init_raycast(data, i);
