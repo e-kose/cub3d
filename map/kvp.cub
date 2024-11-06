@@ -1,10 +1,10 @@
 F 255,     0         , 0
-SO ./textures/cakir.xpm
+SO ./textures/kvp/cakir.xpm
 
-NO ./textures/polat.xpm
+NO ./textures/kvp/polat.xpm
 
-WE ./textures/abuzer.xpm
-EA			./textures/pana.xpm
+WE ./textures/kvp/abuzer.xpm
+EA			./textures/kvp/pana.xpm
 C 47,     79         , 79
 
 11111111111111111111
