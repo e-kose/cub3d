@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:43:58 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/04 15:44:21 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/06 19:14:24 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ void	ft_calc_wall(t_data *data)
 	wall_x -= floor(wall_x);
 	data->raycast->height = (HEIGHT / data->raycast->perp_dist);
 	data->raycast->tex_x = (int)(wall_x * (double)64);
-	if (data->raycast->side1 == 0 || data->raycast->side1 == 1)
-		data->raycast->tex_x = 64 - data->raycast->tex_x - 1;
-	else if (data->raycast->side1 == 2 || data->raycast->side1 == 3)
-		data->raycast->tex_x = 64 - data->raycast->tex_x - 1;
+	data->raycast->tex_x = 64 - data->raycast->tex_x - 1;
 	data->raycast->start_y = -data->raycast->height / 2 + HEIGHT / 2;
 	if (data->raycast->start_y < 0)
 		data->raycast->start_y = 0;

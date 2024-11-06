@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/04 15:42:38 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:17:04 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # include "GNL/get_next_line.h"
 # define WIDTH 1500
 # define HEIGHT 1000
+# define RAY_UP 3
+# define RAY_DOWN 2
+# define RAY_LEFT 0
+# define RAY_RIGHT 1
 
 typedef struct s_raycast
 {

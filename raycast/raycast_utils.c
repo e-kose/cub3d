@@ -6,7 +6,7 @@
 /*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:41:35 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/04 15:43:21 by mehmyilm         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:44:39 by mehmyilm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ void	ft_dda(t_data *data)
 			data->raycast->sidedist_x += data->raycast->deltadist_x;
 			data->player->loc_ipx += data->raycast->step_x;
 			if (data->raycast->step_x == 1)
-				data->raycast->side1 = 1;
+				data->raycast->side1 = RAY_RIGHT;
 			else
-				data->raycast->side1 = 0;
+				data->raycast->side1 = RAY_LEFT;
 		}
 		else
 		{
 			data->raycast->sidedist_y += data->raycast->deltadist_y;
 			data->player->loc_ipy += data->raycast->step_y;
 			if (data->raycast->step_y == 1)
-				data->raycast->side1 = 2;
+				data->raycast->side1 = RAY_DOWN;
 			else
-				data->raycast->side1 = 3;
+				data->raycast->side1 = RAY_UP;
 		}
 		if (data->map->map[data->player->loc_ipy][data->player->loc_ipx] == '1')
 			data->raycast->hit = 1;
