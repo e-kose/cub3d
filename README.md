@@ -1,4 +1,4 @@
-# Cub3D
+<p align="center">#Cub3D</p>
 
 Welcome to the Cub3D project! This project was developed together with [Ertuğrul Köse](https://github.com/e-kose) as part of our educational process in 42 schools. Cub3D is a graphics application based on ray-casting technique that transforms 2D maps into an immersive 3D experience. Our goal is to transform a simple 2D maze map into an immersive 3D environment that the player can explore in real time.
 
@@ -7,7 +7,7 @@ This project aimed to give an in-depth understanding of graphics programming, us
 ## Game View  
 [![Game View](https://github.com/e-kose/cub3d/blob/main/GameView/cub3dImage.png)](https://github.com/e-kose/cub3d/raw/main/GameView/cub3dVideo.mp4)
 
-_Click the image above to download the demo video!_
+<p align="center">_Click the image above to download the demo video!_</p>
 
 ## Installation
 ```bash
