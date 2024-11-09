@@ -1,16 +1,50 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   keycode.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 18:23:35 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/04 15:33:10 by mehmyilm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/*########       ##    ##  #######   ######  ########
+##               ##   ##  ##     ## ##    ## ##
+##               ##  ##   ##     ## ##       ##
+######  #######  #####    ##     ##  ######  ######
+##               ##  ##   ##     ##       ## ##
+##               ##   ##  ##     ## ##    ## ##
+########         ##    ##  #######   ######  ########*/
 
 #include "../inc/cub3d.h"
+
+int	ft_key_released_linux(int keycode, t_data *data)
+{
+
+	if (keycode == 119)
+		data->key->w = 0;
+	if (keycode == 97)
+		data->key->a = 0;
+	if (keycode == 115)
+		data->key->s = 0;
+	if (keycode == 100)
+		data->key->d = 0;
+	if (keycode == 65361)
+		data->key->left = 0;
+	if (keycode == 65363)
+		data->key->right = 0;
+	return (0);
+}
+
+int	ft_key_pressed_linux(int keycode, t_data *data)
+{
+
+	if (keycode == 65307)
+		ft_free(data, NULL);
+	if (keycode == 119)
+		data->key->w = 1;
+	if (keycode == 97)
+		data->key->a = 1;
+	if (keycode == 115)
+		data->key->s = 1;
+	if (keycode == 100)
+		data->key->d = 1;
+	if (keycode == 65361)
+		data->key->left = 1;
+	if (keycode == 65363)
+		data->key->right = 1;
+	return (0);
+}
 
 int	ft_key_released_mac(int keycode, t_data *data)
 {

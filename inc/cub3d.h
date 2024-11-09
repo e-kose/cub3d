@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 13:16:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/11/06 16:17:04 by mehmyilm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/*
+ ███▄ ▄███▓▓█████  ███▄    █  ▄▄▄        ██████▓██   ██▓
+▓██▒▀█▀ ██▒▓█   ▀  ██ ▀█   █ ▒████▄    ▒██    ▒ ▒██  ██▒
+▓██    ▓██░▒███   ▓██  ▀█ ██▒▒██  ▀█▄  ░ ▓██▄    ▒██ ██░
+▒██    ▒██ ▒▓█  ▄ ▓██▒  ▐▌██▒░██▄▄▄▄██   ▒   ██▒ ░ ▐██▓░
+▒██▒   ░██▒░▒████▒▒██░   ▓██░ ▓█   ▓██▒▒██████▒▒ ░ ██▒▓░
+░ ▒░   ░  ░░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░  ██▒▒▒
+░  ░      ░ ░ ░  ░░ ░░   ░ ▒░  ▒   ▒▒ ░░ ░▒  ░ ░▓██ ░▒░
+░      ░      ░      ░   ░ ░   ░   ▒   ░  ░  ░  ▒ ▒ ░░
+       ░      ░  ░         ░       ░  ░      ░  ░ ░
+                                                ░ ░*/
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -165,6 +165,8 @@ int		ft_game_handler(void *param);
 void	ft_player_move(t_data *data);
 int		ft_key_pressed_mac(int keycode, t_data *data);
 int		ft_key_released_mac(int keycode, t_data *data);
+int		ft_key_released_linux(int keycode, t_data *data);
+int		ft_key_pressed_linux(int keycode, t_data *data);
 void	ft_move_ws(t_data *data, int direction);
 void	ft_move_ad(t_data *data, int direction);
 void	ft_rotate_player(t_data *data, int direction);

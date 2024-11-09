@@ -1,10 +1,10 @@
 F 0,     255         , 0
-SO ./textures/bonewall.xpm
+SO ./textures/random/bonewall.xpm
 
-NO ./textures/checker.xpm
+NO ./textures/random/checker.xpm
 
-WE ./textures/pattern2.xpm
-EA			./textures/floorboards.xpm
+WE ./textures/random/pattern2.xpm
+EA			./textures/random/floorboards.xpm
 C 225,30,0
 
 11111111111111111111111111111

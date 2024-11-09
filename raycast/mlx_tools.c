@@ -1,14 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_tools.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mehmyilm <mehmyilm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 18:56:39 by mehmyilm          #+#    #+#             */
-/*   Updated: 2024/11/04 17:19:13 by mehmyilm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/*########       ##    ##  #######   ######  ########
+##               ##   ##  ##     ## ##    ## ##
+##               ##  ##   ##     ## ##       ##
+######  #######  #####    ##     ##  ######  ######
+##               ##  ##   ##     ##       ## ##
+##               ##   ##  ##     ## ##    ## ##
+########         ##    ##  #######   ######  ########*/
 
 #include "../inc/cub3d.h"
 
@@ -54,9 +50,17 @@ void	ft_init_mlx(t_data *data)
 	if (!data->mlx->img)
 		ft_free(data, "Image creation failed");
 	ft_set_img(data);
-	mlx_loop_hook(data->mlx->mlx_ptr, ft_game_handler, data);
-	mlx_hook(data->mlx->win, 2, 0, ft_key_pressed_mac, data);
-	mlx_hook(data->mlx->win, 3, 0, ft_key_released_mac, data);
-	mlx_hook(data->mlx->win, 17, 0, ft_exit_game, data);
+
+	# if defined(__APPLE__)
+		mlx_loop_hook(data->mlx->mlx_ptr, ft_game_handler, data);
+		mlx_hook(data->mlx->win, 2, 0, ft_key_pressed_mac, data);
+		mlx_hook(data->mlx->win, 3, 0, ft_key_released_mac, data);
+		mlx_hook(data->mlx->win, 17, 0, ft_exit_game, data);
+	# elif defined(__linux__)
+		mlx_loop_hook(data->mlx->mlx_ptr, ft_game_handler, data);
+		mlx_hook(data->mlx->win, KeyRelease, KeyPressMask, ft_key_released_linux, data);
+		mlx_hook(data->mlx->win, KeyPress, KeyReleaseMask, ft_key_pressed_linux, data);
+		mlx_hook(data->mlx->win, DestroyNotify, NoEventMask, ft_exit_game, data);
+	# endif
 	mlx_loop(data->mlx->mlx_ptr);
 }

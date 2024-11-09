@@ -1,6 +1,6 @@
-NAME = cub3D
+NAME = cub3d
 
-SRCS = inc/GNL/get_next_line.c cub3D.c utils/free.c utils/error.c \
+SRCS = inc/GNL/get_next_line.c cub3d.c utils/free.c utils/error.c \
 		utils/read_map.c utils/parse_map.c utils/flod_fill.c \
 		utils/check_map.c utils/rgb_utils.c utils/texture_utils.c raycast/mlx_tools.c \
 		raycast/raycast.c raycast/keycode.c raycast/movement.c raycast/raycast_utils.c \
@@ -12,10 +12,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
-    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz -fsanitize=address
+    LDFLAGS = -Linc/mlx_linux -lmlx -Linc/libft -lft -lX11 -lXext -lm -lz
     MLX_DIR = inc/mlx_linux
 else ifeq ($(UNAME_S), Darwin)
-    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit -fsanitize=address
+    LDFLAGS = -Linc/mlx_mac -lmlx -Linc/libft -lft -framework OpenGL -framework AppKit
     MLX_DIR = inc/mlx_mac
 endif
 
