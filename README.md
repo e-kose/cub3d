@@ -7,7 +7,7 @@ This project aimed to give an in-depth understanding of graphics programming, us
 ## Game View  
 [![Game View](https://github.com/menasy/cub3d/blob/main/GameView/cub3d_GameView.png)](https://github.com/menasy/cub3d/blob/main/GameView/cub3d_demo.mov)
 
-_Click the image above to download the demo video!
+_Click the image above to download the demo video!_
 
 ## Installation
 ```bash
