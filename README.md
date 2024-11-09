@@ -9,6 +9,26 @@ Bu proje, grafik programlama, kullanıcı etkileşimleri ve performans optimizas
 
 _Click the image above to download the demo video!_
 
+## Installation
+```bash
+cd Desktop
+git clone git@github.com:MeNasy/cub3d.git cub3d
+cd cub3d
+```
+For Linux install X11
+```bash
+sudo apt install libx11-dev libxext-dev libxi-dev libxrandr-dev libxpm-dev libxmu-dev libxi-dev libxcursor-dev libxt-dev libbsd-dev libjpeg-dev libpng-dev libtiff-dev libgif-dev libopenexr-dev libmpc-dev libgmp-dev libmpfr-dev libgomp1 libgomp-plugin-nvptx libgomp1-plugin-nvptx libatomic1 libquadmath0 libpgm-dev libssl-dev
+```
+## Usage
+To compile the program, run:
+```bash
+make
+```
+To run the program, use one of the following commands:
+```bash
+./cub3d map/kvp.ber
+```
+
 ## Grafik Kütüphanesi
 Bu projede pencere grafik yönetimi için temel bir grafik kütüphanesi olan **MLX** kütüphanesini kullandık. MLX, bize 3B ortamı oluşturmak ve işlemek, kullanıcı girdisini yönetmek ve grafik öğelerini etkili bir şekilde işlemek için gerekli araçları ve işlevleri sağladı.
 
@@ -33,7 +53,4 @@ Bu kontroller, keşfi kolaylaştıran akıcı ve ilgi çekici bir kullanıcı de
 ### Hata İşleme
 Sağlam hata işlemeyi sağlamak için özen gösterdik. Projemiz, geçersiz bir haritadan kaynaklanabilecek çeşitli hata senaryolarını zarif bir şekilde işleyebilir. İster kapatılmamış bir sınır ister eksik öğeler olsun, her şeyi hallettik. Kullanıcılar, istikrarlı ve güvenilir bir deneyim bekleyebilir.
 
-## Installation
-```bash
-git clone git@github.com:MeNasy/cub3d.git cub3d
-cd cub3d
+
