@@ -1,6 +1,6 @@
 # Cub3D
 
-Welcome to the Cub3D project! This project was developed together with [Ertuğrul Köse](https://github.com/e-kose) as part of our educational process in 42 schools. Cub3D is a graphics application based on ray-casting technique that transforms 2D maps into an immersive 3D experience. Our goal is to transform a simple 2D maze map into an immersive 3D environment that the player can explore in real time.
+Welcome to the Cub3D project! This project was developed together with [Mehmet Nasim Yılmaz](https://github.com/menasy/) as part of our educational process in 42 schools. Cub3D is a graphics application based on ray-casting technique that transforms 2D maps into an immersive 3D experience. Our goal is to transform a simple 2D maze map into an immersive 3D environment that the player can explore in real time.
 
 This project aimed to give an in-depth understanding of graphics programming, user interactions and performance optimization. Cub3D offers a classic “Wolfenstein 3D” style gameplay with textured walls with different orientations, dynamic lighting effects and intuitive player controls. Players can freely navigate the environment with WASD and arrow keys, exploring the mysterious labyrinth while trying to reach their goals.
 
