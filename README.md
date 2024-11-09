@@ -64,6 +64,3 @@ We used the following resources to develop this project:
 
 These resources gave us a deep understanding of ray casting and the basics of 3D graphics. In particular, we used these guides to optimize ray casting algorithms and make the game world more immersive.
 
-
-
-Translated with DeepL.com (free version)
