@@ -53,4 +53,15 @@ Bu kontroller, keşfi kolaylaştıran akıcı ve ilgi çekici bir kullanıcı de
 ### Hata İşleme
 Sağlam hata işlemeyi sağlamak için özen gösterdik. Projemiz, geçersiz bir haritadan kaynaklanabilecek çeşitli hata senaryolarını zarif bir şekilde işleyebilir. İster kapatılmamış bir sınır ister eksik öğeler olsun, her şeyi hallettik. Kullanıcılar, istikrarlı ve güvenilir bir deneyim bekleyebilir.
 
+## Yararlanılan Kaynaklar
+Bu projeyi geliştirirken aşağıdaki kaynaklardan faydalandık:
+
+1. [Ray-Casting Tutorial (Lode's Computer Graphics Tutorial)](https://lodev.org/cgtutor/raycasting.html)
+2. [Ray-Casting Tutorial (Permadi)](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
+3. [YouTube Video: Raycasting Engine Explained](https://youtu.be/NbSee-XM7WA?si=X3YdlcCzzg--oJCx)
+4. [Raycasting Engine Tutorial by Pikuma](https://pikuma.com/courses/raycasting-engine-tutorial-algorithm-javascript)
+5. [Medium Article: Raycasting in Cub3D - A Practical Guide](https://medium.com/@rtailidounia/raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2)
+
+Bu kaynaklar, ışın döküm tekniği ve 3D grafiklerin temelleri konusunda bize derin bir anlayış kazandırdı. Özellikle ışın döküm algoritmalarını optimize etmek ve oyun dünyasını daha sürükleyici hale getirmek için bu rehberlerden faydalandık.
+
 
