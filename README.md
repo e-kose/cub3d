@@ -5,9 +5,9 @@ Welcome to the Cub3D project! This project was developed together with [Ertuğru
 This project aimed to give an in-depth understanding of graphics programming, user interactions and performance optimization. Cub3D offers a classic “Wolfenstein 3D” style gameplay with textured walls with different orientations, dynamic lighting effects and intuitive player controls. Players can freely navigate the environment with WASD and arrow keys, exploring the mysterious labyrinth while trying to reach their goals.
 
 ## Game View  
-[![Game View](https://github.com/menasy/cub3d/blob/main/GameView/cub3d_GameView.png)](https://github.com/menasy/cub3d/blob/main/GameView/cub3d_demo.mov)
+[![Game View](https://github.com/e-kose/cub3d/blob/main/GameView/cub3dImage.png)](https://github.com/e-kose/cub3d/raw/main/GameView/cub3dVideo.mp4)
 
-_Click the image above to download the demo video!_
+<p align="center"> Click the image above to download the demo video! </p>
 
 ## Installation
 ```bash
