@@ -12,7 +12,7 @@ _Click the image above to download the demo video!_
 ## Installation
 ```bash
 cd Desktop
-git clone git@github.com:MeNasy/cub3d.git cub3d
+git clone git@github.com:e-kose/cub3d.git cub3d
 cd cub3d
 ```
 For Linux install X11
