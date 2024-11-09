@@ -1,13 +1,13 @@
 # Cub3D
 
-Cub3D projesine hoş geldiniz! Bu proje, 42 okullarındaki eğitim sürecimizin bir parçası olarak [Ertuğrul Köse](https://github.com/e-kose) ile birlikte geliştirildi. Cub3D, 2D haritaları etkileyici bir 3D deneyime dönüştüren, ışın döküm (ray-casting) tekniği üzerine kurulmuş bir grafik uygulamasıdır. Amacımız, basit bir 2D labirent haritasını, oyuncunun gerçek zamanlı olarak keşfedebileceği sürükleyici bir 3D ortama dönüştürmektir.
+Welcome to the Cub3D project! This project was developed together with [Ertuğrul Köse](https://github.com/e-kose) as part of our educational process in 42 schools. Cub3D is a graphics application based on ray-casting technique that transforms 2D maps into an immersive 3D experience. Our goal is to transform a simple 2D maze map into an immersive 3D environment that the player can explore in real time.
 
-Bu proje, grafik programlama, kullanıcı etkileşimleri ve performans optimizasyonu konularında derinlemesine bir anlayış kazandırmayı hedefledi. Cub3D, farklı yönlere sahip dokulu duvarlar, dinamik ışıklandırma efektleri ve sezgisel oyuncu kontrolleri ile klasik bir "Wolfenstein 3D" tarzı oynanış sunar. Oyuncular, WASD ve ok tuşlarıyla ortamda serbestçe gezinebilir, gizemli labirenti keşfederken hedeflerine ulaşmaya çalışabilirler.
+This project aimed to give an in-depth understanding of graphics programming, user interactions and performance optimization. Cub3D offers a classic “Wolfenstein 3D” style gameplay with textured walls with different orientations, dynamic lighting effects and intuitive player controls. Players can freely navigate the environment with WASD and arrow keys, exploring the mysterious labyrinth while trying to reach their goals.
 
 ## Game View  
 [![Game View](https://github.com/menasy/cub3d/blob/main/GameView/cub3d_GameView.png)](https://github.com/menasy/cub3d/blob/main/GameView/cub3d_demo.mov)
 
-_Click the image above to download the demo video!_
+_Click the image above to download the demo video!
 
 ## Installation
 ```bash
@@ -17,7 +17,7 @@ cd cub3d
 ```
 For Linux install X11
 ```bash
-sudo apt install libx11-dev libxext-dev libxi-dev libxrandr-dev libxpm-dev libxmu-dev libxi-dev libxcursor-dev libxt-dev libbsd-dev libjpeg-dev libpng-dev libtiff-dev libgif-dev libopenexr-dev libmpc-dev libgmp-dev libmpfr-dev libgomp1 libgomp-plugin-nvptx libgomp1-plugin-nvptx libatomic1 libquadmath0 libpgm-dev libssl-dev
+sudo apt install libx11-dev libxext-dev libxxi-dev libxrandr-dev libxpm-dev libxmu-dev libxi-dev libxcursor-dev libxt-dev libbsd-dev libjpeg-dev libpng-dev libtiff- dev libgif-dev libopenexr-dev libmpc-dev libgmp-dev libgmp-dev libmpfr-dev libgomp1 libgomp-plugin-nvptx libgomp1-plugin-nvptx libatomic1 libquadmath0 libpgm-dev libssl-dev
 ```
 ## Usage
 To compile the program, run:
@@ -29,32 +29,32 @@ To run the program, use one of the following commands:
 ./cub3d map/kvp.ber
 ```
 
-## Grafik Kütüphanesi
-Bu projede pencere grafik yönetimi için temel bir grafik kütüphanesi olan **MLX** kütüphanesini kullandık. MLX, bize 3B ortamı oluşturmak ve işlemek, kullanıcı girdisini yönetmek ve grafik öğelerini etkili bir şekilde işlemek için gerekli araçları ve işlevleri sağladı.
+## Graphics Library
+In this project we used the **MLX** library, a basic graphics library for window graphics management. MLX provided us with the tools and functions necessary to create and render 3D environment, manage user input and render graphic elements effectively.
 
-## Temel Özellikler
+## Key Features
 
-### Işın Döküm Sihri
-Projemiz, 2B haritayı 3B harikalar diyarına dönüştürmek için ışın dökümünün gücünden yararlanıyor. Işınları ustaca manipüle ederek, bir zamanlar düz bir yüzey olan şeye derinlik ve boyut getiriyoruz. Bu teknik, gerçek zamanlı olarak 3B ortamların illüzyonunu yaratmamızı sağlıyor.
+### Beam Casting Magic
+Our project harnesses the power of ray casting to transform a 2D map into a 3D wonderland. By skillfully manipulating rays, we bring depth and dimension to what was once a flat surface. This technique allows us to create the illusion of 3D environments in real time.
 
-### Dokulu Duvarlar
-Duvarlara dokular ekleyerek projemizi bir adım öteye taşıyoruz. Her ana yön (kuzey, güney, doğu ve batı) kendine özgü dokusuyla süslenerek sürükleyici deneyimi artırıyor. Dokulardaki çeşitlilik, sanal dünyamıza gerçekçilik ve derinlik katıyor.
+### Textured Walls
+We take our project one step further by adding textures to the walls. Each main direction (north, south, east and west) is decorated with its own unique texture, enhancing the immersive experience. The variety of textures adds realism and depth to our virtual world.
 
-### Oyuncu Kontrolleri
-Oyuncular sezgisel kontrollerle 3D ortamı keşfedebilirler:
-- **İleri** hareket için `W`
-- **Geri** hareket için `S`
-- **Sola** hareket için `A`
-- **Sağa** hareket için `D`
-- **Bakış açısını değiştirmek** için sol ve sağ ok tuşlarını kullanın.
+### Player Controls
+Players can explore the 3D environment with intuitive controls:
+- `W` for **forward** movement
+- `S` for **backward** movement
+- `A` for **left** movement
+- `D` for **right** movement
+- Use the left and right arrow keys to **change the viewpoint**.
 
-Bu kontroller, keşfi kolaylaştıran akıcı ve ilgi çekici bir kullanıcı deneyimi sunar.
+These controls provide a fluid and engaging user experience that facilitates discovery.
 
-### Hata İşleme
-Sağlam hata işlemeyi sağlamak için özen gösterdik. Projemiz, geçersiz bir haritadan kaynaklanabilecek çeşitli hata senaryolarını zarif bir şekilde işleyebilir. İster kapatılmamış bir sınır ister eksik öğeler olsun, her şeyi hallettik. Kullanıcılar, istikrarlı ve güvenilir bir deneyim bekleyebilir.
+### Error Handling
+We've taken care to ensure robust error handling. Our project can elegantly handle various error scenarios that can result from an invalid map. Whether it's an unclosed border or missing items, we've got it covered. Users can expect a stable and reliable experience.
 
-## Yararlanılan Kaynaklar
-Bu projeyi geliştirirken aşağıdaki kaynaklardan faydalandık:
+## Resources Utilized
+We used the following resources to develop this project:
 
 1. [Ray-Casting Tutorial (Lode's Computer Graphics Tutorial)](https://lodev.org/cgtutor/raycasting.html)
 2. [Ray-Casting Tutorial (Permadi)](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
@@ -62,6 +62,8 @@ Bu projeyi geliştirirken aşağıdaki kaynaklardan faydalandık:
 4. [Raycasting Engine Tutorial by Pikuma](https://pikuma.com/courses/raycasting-engine-tutorial-algorithm-javascript)
 5. [Medium Article: Raycasting in Cub3D - A Practical Guide](https://medium.com/@rtailidounia/raycasting-in-cub3d-42-network-project-a-practical-tutorial-using-vectors-68eeb16b3de2)
 
-Bu kaynaklar, ışın döküm tekniği ve 3D grafiklerin temelleri konusunda bize derin bir anlayış kazandırdı. Özellikle ışın döküm algoritmalarını optimize etmek ve oyun dünyasını daha sürükleyici hale getirmek için bu rehberlerden faydalandık.
+These resources gave us a deep understanding of ray casting and the basics of 3D graphics. In particular, we used these guides to optimize ray casting algorithms and make the game world more immersive.
 
 
+
+Translated with DeepL.com (free version)
